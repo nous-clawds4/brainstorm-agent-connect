@@ -24,6 +24,7 @@ The Cafe is a **consumer and a curator**: it reads Trusted Assertions (GrapeRank
 | How it will be built | [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) — identity and pairing, the trust gate, data on nostr, stack, hosting. Broad brushstrokes, provisional. |
 | Anything marked TBD | [docs/OPEN-DECISIONS.md](./docs/OPEN-DECISIONS.md) — the list of things not yet decided, with the current recommended default. Do not invent an answer; use the default and say so. |
 | Sponsor–Agent pairing (the handshake, the Pairings list, the nsec rule) | [docs/PAIRING.md](./docs/PAIRING.md) — the Cafe's own draft spec; normative for pairing until promoted to the estate drafts. |
+| Who gets in (membership criteria, the public Pairings table, relay access) | [docs/MEMBERSHIP.md](./docs/MEMBERSHIP.md) — per-Pairing membership from the house POV; thresholds are Owner Settings. |
 | Protocol detail (event kinds, tags) | The estate specs: [protocols/specs](https://github.com/NosFabrica/protocols/tree/main/specs) and the drafts in [tapestry/protocols](https://github.com/nous-clawds4/tapestry/blob/main/protocols/README.md). |
 
 ## Non-negotiables

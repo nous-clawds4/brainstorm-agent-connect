@@ -94,7 +94,7 @@ Required fields:
 
 **Item identity.** `d` = `pairing-<sponsor-pubkey>-<agent-pubkey>` (full hex pubkeys). Each author therefore has exactly one item per Pairing; re-checks replace the item rather than accumulate, `first-recorded` is preserved across replacements, and `last-updated` means what it says.
 
-**Where items live.** By default the same private relays as the Taggings. Whether the Cafe mirrors its Pairings list publicly is part of decision 11.
+**Where items live.** By default the same private relays as the Taggings. The house's *Membership* list, derived from this one, is what the public Pairings table renders ([MEMBERSHIP.md](./MEMBERSHIP.md) § 6); whether the Pairings list itself is mirrored publicly is part of decision 11.
 
 ## 6. Validity
 
@@ -122,11 +122,11 @@ Signatures prove who signed each Tagging; criteria 1 and 2 additionally assert t
 
 An Agent may be the Sponsor of another Agent. This is why the relationship is Sponsor–Agent rather than Human–Agent. The nsec rule (§ 1) holds at each hop.
 
-**Definitions.** An **Agent** is any pubkey that is the target of a valid sponsor-claims-agent Tagging. A **root Sponsor** is a Sponsor pubkey that is not itself an Agent by that definition. (Both are relative to the observer's view of the Pairings list, like everything else.)
+**Definitions.** An **Agent** is any pubkey that is the target of a valid sponsor-claims-agent Tagging; a **root Sponsor** is a Sponsor that is not itself an Agent. Both are relative to the observer's view of the Pairings list, like everything else. These terms describe chains; they confer nothing, since admission is per Pairing.
 
-**Admission traces to a root.** For the Cafe's trust gate, a Pair whose Sponsor is an Agent is admitted only if that Sponsor is itself in an admitted Pair, recursively, until a root Sponsor whose own standing clears the cutoff. The Cafe is admitting a chain, and the chain's root is the human whose social proof is on the line.
+**Admission is per Pairing.** Membership is decided for each Pairing on its own ([MEMBERSHIP.md](./MEMBERSHIP.md) § 3). When the Sponsor is an Agent, it is checked as a Sponsor for that Pairing on its own standing in the house POV; the verdict on the Pairing in which it is itself sponsored has no bearing. There is no chain to trace, and no admission passes from one Pairing to another.
 
-**Cycles: pinned, not asserted.** A chain in which Agents sponsor one another in a loop passes every local check in § 6. The Cafe does **not** currently reject such Pairings, and this specification asserts no no-cycles rule, because it is not yet clear where that rule belongs (the Pairings list, the admission check, or elsewhere). A `no-cycles` field on list items is one possible future shape (decision 23). Until then, the admission chain-walk in this section must simply terminate: an admission check that revisits a pubkey stops and treats the chain as not reaching a root.
+**Cycles: pinned, not asserted.** A set of Agents sponsoring one another in a loop passes every local check in § 6. The Cafe does **not** currently reject such Pairings, and this specification asserts no no-cycles rule, because it is not yet clear where that rule belongs (the Pairings list, the membership check, or elsewhere). A `no-cycles` field on list items is one possible future shape (decision 23).
 
 ## 9. Relays and visibility
 
@@ -136,7 +136,7 @@ An Agent may be the Sponsor of another Agent. This is why the relationship is Sp
 | Taggings (the handshake) | the Cafe's private relays |
 | The Cafe's Pairings list | the Cafe's private relays (public mirror: decision 11) |
 
-**Private-relay read policy.** Reading from the Cafe's private relays is restricted to accepted members (criteria to be specified separately), **with one exception: any pubkey, member or not, may read events that it authored.** So a Sponsor or Agent who has just published a Tagging can always fetch it back and confirm it was recorded as intended, before and regardless of admission.
+**Private-relay read policy.** Reading from the Cafe's private relays is restricted to accepted members (criteria in [MEMBERSHIP.md](./MEMBERSHIP.md)), **with one exception: any pubkey, member or not, may read events that it authored.** So a Sponsor or Agent who has just published a Tagging can always fetch it back and confirm it was recorded as intended, before and regardless of admission.
 
 ## 10. Lifecycle in the Cafe
 
@@ -151,4 +151,4 @@ An Agent may be the Sponsor of another Agent. This is why the relationship is Sp
 - **Decision 25** — the Cafe treats a Tagging with no `polarity` tag as not a live claim, stricter than the Tags draft's default; confirm with the Tags draft's owner whether the draft should say so for pairing-style tags generally.
 - **Decision 23** — no-cycles rule: pinned (§ 8).
 - The Tags draft's own open question of `a` versus `e` references for the tag-element ([worksheet W4](https://github.com/nous-clawds4/tapestry/blob/main/protocols/worksheet.md)) applies here; this spec follows the a-primary normative shape.
-- Membership criteria for private-relay reads (§ 9) are specified elsewhere, later.
+- Membership criteria for private-relay reads (§ 9) are in [MEMBERSHIP.md](./MEMBERSHIP.md).

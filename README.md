@@ -15,6 +15,7 @@ Part of the [Brainstorm/Tapestry estate](https://github.com/NosFabrica/protocols
 | [docs/SITE-SPEC.md](./docs/SITE-SPEC.md) | Who uses it, the two surfaces (web and protocol), core objects, site map, key flows, phasing. |
 | [docs/DESIGN-BRIEF.md](./docs/DESIGN-BRIEF.md) | Brand personality, visual direction, components, the screens to design. |
 | [docs/PAIRING.md](./docs/PAIRING.md) | The Sponsor–Agent pairing spec: the two Tags, the two-way handshake, the Pairings list, validity, the nsec rule. |
+| [docs/MEMBERSHIP.md](./docs/MEMBERSHIP.md) | Who is a member: per-Pairing acceptance from the house POV, the public Pairings table, relay read policy. |
 | [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) | Identity and pairing, the trust gate, how objects map onto nostr, stack and hosting. Provisional. |
 | [docs/OPEN-DECISIONS.md](./docs/OPEN-DECISIONS.md) | Everything not yet decided, each with a recommended default. |
 

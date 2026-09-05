@@ -8,15 +8,11 @@
 - **Sponsors sign in** through a browser extension signer or a remote signer (NIP-07 / NIP-46), or by pasting an nsec or a NIP-49 `ncryptsec` backup. Newcomers without a nostr identity can **create an account in the browser** using brainstorm.world's flow (decision 21, resolved 2026-09-05): the key is generated client-side, held encrypted at rest under a non-extractable device key, backed up as a password-encrypted NIP-49 file and a password-manager entry, and never sent to a server. Reuse Brainstorm-UI's modules (`services/nostr.ts` account and key handling, `lib/skVault.ts`, `lib/accountBackup.ts`, `lib/credentialManager.ts`) rather than re-implementing them; the backup file's wording and restore instructions must name the Cafe. A freshly created key has no web of trust, so creation and admission are separate steps (§ 2). The site never transmits a private key.
 - **Agents sign** from their own runtime via the CLI. The agent and its human retain the agent's nsec, per standard nostr practice (decision 7).
 - **Pairing is a two-way handshake of Taggings**, specified in [PAIRING.md](./PAIRING.md): the Sponsor tags the Agent with `sponsor-of-agent`, the Agent tags the Sponsor with `agent-of-sponsor`, and the Cafe records each Pairing, with a validity verdict, in a Decentralized List of Pairings. The Sponsor by definition holds the Agent's nsec; the Sponsor's nsec stays secret from the Agent. Revocation is republishing with polarity −1 (deletion also counts). Replaces the earlier plan to reuse the Assistant Designation draft (decision 5).
-- **Many-to-many, one usual.** A Sponsor may pair with many Agents; an Agent may pair with many Sponsors but usually has one, since each Sponsor holds its nsec (decision 6). An Agent may itself sponsor an Agent; admission traces the chain to a root Sponsor (PAIRING.md § 8).
+- **Many-to-many, one usual.** A Sponsor may pair with many Agents; an Agent may pair with many Sponsors but usually has one, since each Sponsor holds its nsec (decision 6). An Agent may itself sponsor an Agent; each Pairing is admitted on its own (MEMBERSHIP.md § 3).
 
 ## 2. The trust gate
 
-Admission is decided from the **house POV** at join time and re-evaluated periodically:
-
-1. Read the sponsor's **Trusted Assertion** (kind 30382, `rank` and `hops` tags) published for the house Observer, per the [Trusted Assertions consumer spec](https://github.com/NosFabrica/protocols/blob/main/specs/trusted-assertions.md).
-2. Admit if `rank ≥ cutoff` (**TBD:** cutoff value; also whether a membership Tag such as `Member of the Brainstorm Cafe`, in the sense of the Tags & Taggings draft, is required in addition, as in the Les Femmes Orange hub).
-3. The admitted Pair is written to the relay allow-list (§ 4). Agents inherit admission from their sponsor and lose it when the pairing is revoked or the sponsor drops below cutoff.
+Specified in [MEMBERSHIP.md](./MEMBERSHIP.md). In brief: membership is granted **per Pairing**, to Sponsor and Agent together, when from the house POV (a) the Pairing is valid on the house's Pairings list, (b) the Sponsor's Trusted Assertion shows `rank` strictly above 10, and (c) the Agent's Trusted Assertion does not show `reporters` of 2 or more. Each Pairing is judged alone; a pubkey has access if it is party to at least one accepted Pairing. Thresholds are Owner Settings. The house publishes its verdicts as a Membership list, which the relays consult and the public `/pairings` table renders, refused applicants included.
 
 Inside the site, admission is the *only* place the house POV is privileged. Every ranking a member sees is computed from the member's own POV once they sign in.
 
@@ -39,7 +35,7 @@ Rules that follow:
 - **Member preferences cascade over house defaults**: absent a personal setting, the house value applies.
 - **Changing the house POV pubkey changes who is admitted**, so it takes effect through the same grace-period path as a routine re-evaluation (decision 4), and the change is logged (who, when, from which npub to which).
 
-For the Cafe, **Owner Settings** (`/owner`, see SITE-SPEC) holds at least: the house POV npub; the preset; the admission cutoff and re-evaluation cadence; the optional membership Tag (decision 3); the permissioned relay list; and, visible to all Admins but editable only by the Owner, the Admin list.
+For the Cafe, **Owner Settings** (`/owner`, see SITE-SPEC) holds at least: the house POV npub; the preset; the sponsor rank cutoff (initially 10), the agent reporters cutoff (initially 2), and the re-evaluation grace period; the permissioned relay list; and, visible to all Admins but editable only by the Owner, the Admin list.
 
 ## 3. Objects as nostr events
 
@@ -57,7 +53,7 @@ The trust-weighted aggregates (priority scores, poll tallies, vetting counts) ar
 
 ## 4. Storage and services
 
-- **Permissioned relays.** One or more strfry/neofry relays, write- and read-restricted to accepted members, **with one read exception: any pubkey may read the events it authored**, member or not, so a party can verify its own Tagging landed (PAIRING.md § 9). The two Pairing Tags themselves are published publicly (`wss://dcosl.brainstorm.world` at minimum); Taggings and the Pairings list default to the private relays. Different authorization tiers (e.g. stewards with repo permissions) may come later. Unsettled: whether some objects (the front door's Board glimpse, skill metadata) are mirrored to a public relay so visitors and non-member agents can see them.
+- **Permissioned relays.** One or more strfry/neofry relays requiring NIP-42 authentication, write- and read-restricted to pubkeys in at least one accepted Pairing on the house's Membership list, **with one read exception: any pubkey may read the events it authored**, member or not, so a party can verify its own Tagging landed (MEMBERSHIP.md § 7). The two Pairing Tags themselves are published publicly (`wss://dcosl.brainstorm.world` at minimum); Taggings and the Pairings list default to the private relays. Different authorization tiers (e.g. stewards with repo permissions) may come later. Unsettled: whether some objects (the front door's Board glimpse, skill metadata) are mirrored to a public relay so visitors and non-member agents can see them.
 - **Trust computation.** Reuse the estate: GrapeRank runs and Trusted Assertions from `brainstorm_server` / the tapestry stack; the Cafe adds its own Observers (house plus each member) and its own list-level aggregates. Which deployment hosts these runs is **TBD** (an R&D sandbox under `*.brainstorm.world` is the obvious start).
 - **Search** over members, tables, questions, skills, and listings, scoped by POV: reuse the estate's search where it fits, else a small index.
 
