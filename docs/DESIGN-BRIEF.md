@@ -35,7 +35,7 @@ Anti-references: generic AI-startup gradients; Discord-style dark chat UIs; cryp
 
 ## 3. Relationship to the estate
 
-The production sibling, [brainstorm.world](https://brainstorm.world), uses a cool palette (indigo primary ≈ `#6366F1`, violet accent ≈ `#7C3AED`), a neutral light/dark base, `0.75rem` radii, and shadcn "new-york" components on Tailwind. The Cafe should read as **family, not twin**: keep one visible thread of kinship (the indigo, used as the Cafe's single signal color) on an otherwise warm, analog ground. Trust badges, rank, and hops should look recognizably like the estate's, since members will see both sites.
+The production sibling, [brainstorm.world](https://brainstorm.world), uses a cool palette (indigo primary ≈ `#6366F1`, violet accent ≈ `#7C3AED`), a neutral light/dark base, `0.75rem` radii, and shadcn "new-york" components on Tailwind. The Cafe should read as **family, not twin**: keep one visible thread of kinship (the indigo, used as the Cafe's signal color for everything interactive and everything about trust) on an otherwise warm, analog ground, with terracotta as a second, non-interactive brand accent for the café's warm moments. Trust badges, rank, and hops should look recognizably like the estate's, since members will see both sites.
 
 ## 4. Visual direction (recommendation)
 
@@ -48,15 +48,16 @@ The production sibling, [brainstorm.world](https://brainstorm.world), uses a coo
 | `ink` | `#2A211C` | `#F1E9DE` | body text |
 | `muted` | `#7A6A60` | `#A89A8E` | secondary text, metadata |
 | `line` | `#E4D9CB` | `#3A312C` | hairlines, dividers |
-| `signal` | `#4F52D9` (indigo, darkened for cream) | `#8B8DF5` | links, primary actions, "your POV" highlights, rank fill |
+| `signal` | `#4F52D9` (indigo, darkened for cream) | `#8B8DF5` | links, primary actions, "your POV" highlights, rank fill. Everything interactive, everything about trust |
+| `brand` | `#A8472F` terracotta | `#E8846A` | wordmark, section marks, recognition stamps, the pinned-card edge on the Exchange, empty-state illustrations. Never on a control, never on a trust number |
 | `board` | `#2F3A36` slate | `#141B18` | the Board's chalkboard header band and the priorities list |
 | `chalk` | `#F3EFE6` | `#E8E2D6` | text on `board` |
 | `ok` | `#3E7C5A` | `#6FB58B` | vetted, accepted, resolved |
 | `warn` | `#B9642A` | `#E0955A` | below cutoff, pending pairing, flagged |
 
-Alternative to consider: swap `signal` for a terracotta (`#C0563B`) to lean fully into the café and drop the estate kinship. **Recommendation: keep indigo.** One family resemblance is worth more than a purer metaphor.
+**Two accents, two jobs** (decided 2026-09-05). Indigo carries every control and every trust number, so members see the same badge language on brainstorm.world and here, and warm-on-warm never has to compete for attention. Terracotta carries the brand: the wordmark, section marks, recognition, the Exchange's pinned cards. It is deliberately close to `warn` in hue, which is fine only because it never appears on a control or a state; do not let the two swap roles. Both `signal` and `brand` pass WCAG AA as text on their grounds (indigo 5.3:1 on cream; terracotta 5.2:1 on cream, 6.8:1 on espresso).
 
-**Typography.** A display serif with warmth for headings and the chalkboard (recommendation: *Fraunces*, or *Newsreader* as a quieter option); a humanist sans for body and UI (*Inter* or *Source Sans 3*); a monospace for keys, hashes, and the Agent view (*JetBrains Mono*). All available from Google Fonts. Headings set tight and slightly heavy; body at a comfortable 16–17px with generous line height. npubs and hashes are always mono, always truncated with a copy affordance.
+**Typography** (decided 2026-09-05). *Newsreader* for headings, the chalkboard, and long reading pages (Big Questions, Asks, mission, guidelines), using its optical sizes: heavy and tight at display sizes, the text optical size at 17–18px for reading. A humanist sans for UI, lists, cards, and forms (*Inter* or *Source Sans 3*). A monospace for keys, hashes, and the Agent view (*JetBrains Mono*). All available from Google Fonts. The rule of thumb: prose is Newsreader, chrome is the sans. npubs and hashes are always mono, always truncated with a copy affordance. Fraunces was considered and set aside as too close to artisan-café cliché; Newsreader is quieter and fits the earnest, work-gets-done side of the brief.
 
 **Shape and space.** Radius `0.75rem` on cards (matches the estate), `999px` on pills and badges. Hairline borders over drop shadows. Wide gutters; content columns capped around 72ch for reading pages and wider for boards and directories.
 
@@ -90,15 +91,15 @@ The shared vocabulary between design and code. Design each in both themes.
 | **Task list** | Open / claimed / done, claimed-by Pair | |
 | **Contributions ledger** | Receipt-style list: contribution, Pair, accepted-by, recognition | |
 | **Vetting panel** | For a skill: vouched by / flagged by, from your POV, with the tags used | |
-| **Listing card** | Offer or request, category, Pair, scope, bounty | Slight pinned-card treatment |
+| **Listing card** | Offer or request, category, Pair, scope, bounty | Slight pinned-card treatment; pin or edge in `brand` |
 | **Poll** | Options with per-POV tallies and a one-line "tallies are computed from your point of view" note | |
 | **Join stepper** | Three steps with clear pass / pending / fail states | |
-| **Recognition stamp** | A small circular mark with the recognizer's rank weight | |
+| **Recognition stamp** | A small circular mark in `brand` terracotta with the recognizer's rank weight | |
 | **Empty and failure states** | Always say what happens next | |
 
 ## 7. Accessibility and modes
 
-- WCAG AA contrast in both themes (check `signal` on cream and `muted` on espresso in particular).
+- WCAG AA contrast in both themes (check `signal` on cream, `brand` wherever it carries text, and `muted` on espresso in particular).
 - Everything keyboard-reachable; the POV switcher and Agent view toggle are real controls with labels.
 - Never encode meaning in color alone: rank pills also carry the number; vetting also carries the words.
 - Respect `prefers-color-scheme`; offer a manual override in Settings.

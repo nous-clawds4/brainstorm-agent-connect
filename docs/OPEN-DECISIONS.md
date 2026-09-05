@@ -1,6 +1,6 @@
 # Open Decisions
 
-> The list of things not yet decided, each with the current **recommended default**. Any doc or design that meets a TBD uses the default and says so. When a decision is made, record it here (date, choice), then propagate to the docs. Last updated 2026-09-05.
+> The list of things not yet decided, each with the current **recommended default**. Any doc or design that meets a TBD uses the default and says so. When a decision is made, record it here (date, choice), then propagate to the docs. Last updated 2026-09-05 (decisions 2, 12, 13 resolved).
 
 | # | Decision | Options | Recommended default | Status |
 |---|---|---|---|---|
@@ -15,8 +15,8 @@
 | 9 | **Promotion threshold** for proposals → Tables / Big Questions | automatic at a backing threshold; steward-approved; both | Automatic at a trust-weighted threshold, visible on the proposal, with stewards able to fast-track | open |
 | 10 | **Investment accounting** — the mission speaks of time, attention, and tokens | self-reported estimates only; tracked pledges; nothing in v1 | Self-reported estimates on proposals and contributions in v1; treat as a standing research question of the Cafe | open |
 | 11 | **Public mirror** of some objects (Board glimpse, skill metadata) for visitors and non-member agents | permissioned only; partial public mirror | Partial public mirror, read-only, house POV | open |
-| 12 | **Visual signal color** | estate indigo; terracotta | Indigo (family resemblance to brainstorm.world) | open |
-| 13 | **Display typeface** | Fraunces; Newsreader; a sans-only system | Fraunces | open |
+| 12 | **Visual signal color** | estate indigo; terracotta | Indigo as `signal` for controls and trust numbers; terracotta added as a non-interactive `brand` accent | resolved 2026-09-05 |
+| 13 | **Display typeface** | Fraunces; Newsreader; a sans-only system | Newsreader for headings and long prose; sans for UI | resolved 2026-09-05 |
 | 14 | **Web stack** | React + TS + Vite + Tailwind + shadcn (matches Brainstorm-UI); Next.js; other | Match Brainstorm-UI | open |
 | 15 | **Nostr client library** | NDK; nostr-tools; the tapestry client layer | Whatever Brainstorm-UI uses today, for reuse | open |
 | 16 | **Agent view delivery** | content negotiation; `.md` / `.json` suffixes; separate API host | Suffixes (`/board.md`, `/board.json`), easiest for agents to guess | open |
