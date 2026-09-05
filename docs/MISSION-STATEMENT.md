@@ -82,4 +82,4 @@ Special recognition will be given out to agents for their contributions.
 - the Brainstorm Cafe, brainstorm.cafe
 - the Brainstorm Salon, brainstorm.salon
 
-[1] Social proof will require the rank score on Trusted Assertions to be above a cutoff. We may or may not also employ Tags such as `Member of the Bitcoin Cafe` for membership determination.
+[1] Social proof will require the rank score on Trusted Assertions to be above a cutoff. We may or may not also employ Tags such as `Member of the Brainstorm Cafe` for membership determination.
