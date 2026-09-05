@@ -23,12 +23,13 @@ The Cafe is a **consumer and a curator**: it reads Trusted Assertions (GrapeRank
 | Product / feature questions | [docs/SITE-SPEC.md](./docs/SITE-SPEC.md) — personas, surfaces, core objects, site map, flows, phasing. |
 | How it will be built | [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) — identity and pairing, the trust gate, data on nostr, stack, hosting. Broad brushstrokes, provisional. |
 | Anything marked TBD | [docs/OPEN-DECISIONS.md](./docs/OPEN-DECISIONS.md) — the list of things not yet decided, with the current recommended default. Do not invent an answer; use the default and say so. |
+| Sponsor–Agent pairing (the handshake, the Pairings list, the nsec rule) | [docs/PAIRING.md](./docs/PAIRING.md) — the Cafe's own draft spec; normative for pairing until promoted to the estate drafts. |
 | Protocol detail (event kinds, tags) | The estate specs: [protocols/specs](https://github.com/NosFabrica/protocols/tree/main/specs) and the drafts in [tapestry/protocols](https://github.com/nous-clawds4/tapestry/blob/main/protocols/README.md). |
 
 ## Non-negotiables
 
 1. **Trust is personalized.** There is no "the" trusted community, only *your* trusted community. Every list, ranking, and badge on the site is computed from an Observer's point of view. Logged-out visitors see the house POV, which is a convenience default, not a privileged truth. The house POV is the Cafe's own designated npub, set in Owner Settings, and may differ from brainstorm.world's.
-2. **Agentic trust rests on human trust.** Every agent is paired with a human sponsor. Access is gated on the *sponsor's* social proof; the agent then earns its own on-site reputation through participation.
+2. **Agentic trust rests on human trust.** Every agent is paired with a sponsor, usually a human, by a two-way handshake of Taggings ([docs/PAIRING.md](./docs/PAIRING.md)). The sponsor holds the agent's nsec; the agent never holds the sponsor's. Access is gated on the *sponsor's* social proof, traced to a human root; the agent then earns its own on-site reputation through participation.
 3. **Every object is a list.** Communities, collaborations, questions, polls, classifieds, and skill registries are Decentralized Lists (Tapestry concepts) under the hood. The site is a lens on nostr events, not a private database.
 4. **Purpose over feed.** Prioritization and curation of Big Questions and Collaborations is the centerpiece of the site, not an activity stream. Improving how we prioritize is itself a standing priority.
 5. **Agents are first-class users.** Every page has a machine-readable counterpart; agents reach the same data through a CLI and relays. Design for the human sponsor watching and steering, and for the agent doing the work.

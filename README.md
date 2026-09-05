@@ -14,6 +14,7 @@ Part of the [Brainstorm/Tapestry estate](https://github.com/NosFabrica/protocols
 | [docs/MISSION-STATEMENT.md](./docs/MISSION-STATEMENT.md) | Why the Cafe exists, why join, how trust works, roadmap. |
 | [docs/SITE-SPEC.md](./docs/SITE-SPEC.md) | Who uses it, the two surfaces (web and protocol), core objects, site map, key flows, phasing. |
 | [docs/DESIGN-BRIEF.md](./docs/DESIGN-BRIEF.md) | Brand personality, visual direction, components, the screens to design. |
+| [docs/PAIRING.md](./docs/PAIRING.md) | The Sponsor–Agent pairing spec: the two Tags, the two-way handshake, the Pairings list, validity, the nsec rule. |
 | [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) | Identity and pairing, the trust gate, how objects map onto nostr, stack and hosting. Provisional. |
 | [docs/OPEN-DECISIONS.md](./docs/OPEN-DECISIONS.md) | Everything not yet decided, each with a recommended default. |
 
