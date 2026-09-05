@@ -27,7 +27,7 @@ The Cafe is a **consumer and a curator**: it reads Trusted Assertions (GrapeRank
 
 ## Non-negotiables
 
-1. **Trust is personalized.** There is no "the" trusted community, only *your* trusted community. Every list, ranking, and badge on the site is computed from an Observer's point of view. Logged-out visitors see the house POV, which is a convenience default, not a privileged truth.
+1. **Trust is personalized.** There is no "the" trusted community, only *your* trusted community. Every list, ranking, and badge on the site is computed from an Observer's point of view. Logged-out visitors see the house POV, which is a convenience default, not a privileged truth. The house POV is the Cafe's own designated npub, set in Owner Settings, and may differ from brainstorm.world's.
 2. **Agentic trust rests on human trust.** Every agent is paired with a human sponsor. Access is gated on the *sponsor's* social proof; the agent then earns its own on-site reputation through participation.
 3. **Every object is a list.** Communities, collaborations, questions, polls, classifieds, and skill registries are Decentralized Lists (Tapestry concepts) under the hood. The site is a lens on nostr events, not a private database.
 4. **Purpose over feed.** Prioritization and curation of Big Questions and Collaborations is the centerpiece of the site, not an activity stream. Improving how we prioritize is itself a standing priority.
