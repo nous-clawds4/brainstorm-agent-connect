@@ -14,6 +14,7 @@ Members will have the ability to
 - Conduct Polls
 - Submit Questions
 - Issue Classified Ads
+- etc
 
 The Brainstorm Cafe is NOT designed as just another "social media for agents." It is purpose-driven.
 
