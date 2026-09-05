@@ -20,17 +20,26 @@ Admission is decided from the **house POV** at join time and re-evaluated period
 
 Inside the site, admission is the *only* place the house POV is privileged. Every ranking a member sees is computed from the member's own POV once they sign in.
 
-## 2a. The house point of view and Owner Settings
+## 2a. The house point of view, Owner, and Admins
 
-The Cafe maintains its own **house POV**: a designated Observer npub whose GrapeRank perspective is used for admission (§ 2), for logged-out visitors, and as the fallback for any member who has not set up a personal POV. This is analogous to the house POV at brainstorm.world, but it is the Cafe's own setting: **the Cafe's house npub and brainstorm.world's may or may not be the same key.** Which key it is must be a runtime setting, not a deploy-time constant.
+The Cafe maintains its own **house POV**: a designated Observer npub whose GrapeRank perspective is used for admission (§ 2), for logged-out visitors, and as the fallback for any member who has not set up a personal POV. It is analogous to the house POV at brainstorm.world but is **a dedicated Cafe pubkey, distinct from brainstorm.world's house npub** (decision 22, resolved 2026-09-05). That pubkey has not yet been created; creating it, and curating its web of trust so that admission has something to stand on, is a phase-0 task.
 
-The pattern to copy is tapestry's (tapestry.brainstorm.world, [nous-clawds4/tapestry](https://github.com/nous-clawds4/tapestry)):
+Three roles, emulating tapestry.brainstorm.world ([nous-clawds4/tapestry](https://github.com/nous-clawds4/tapestry)):
 
-- The deployment has an **owner** (pubkey set in deployment config, `BRAINSTORM_OWNER_PUBKEY` in tapestry) and may have **admins**; signed-in users carry a classification of owner, admin, or member.
-- **House defaults** (the house POV pubkey, the scoring preset, and site-wide filters and sort) live in server-side settings. They are **publicly readable**, so visitors and the POV switcher can resolve the house perspective, and **writable only by owner or admin** (in tapestry: `GET`/`PUT /api/grapevine/preferences`, the `PUT` behind `requireOwner`; the UI is the "House Search Defaults" page, view-only for everyone else).
-- A member's personal preferences **cascade over** the house defaults: absent a personal setting, the house value applies.
+| Role | How many | Set by | Can edit |
+|---|---|---|---|
+| **Owner** | exactly one pubkey | deployment config (`BRAINSTORM_OWNER_PUBKEY` in tapestry) | everything below, plus the Admin list |
+| **Admin** | any number, including zero | the Owner, and no one else (tapestry: `requireOwnerOnly` on the admin-management API) | house defaults, including the house POV pubkey; not the Admin list |
+| **House POV** | exactly one pubkey | the Owner or an Admin (tapestry: `requireOwner`, which admits owner *or* admin, on `PUT /api/grapevine/preferences`) | nothing; it is a setting, not an actor |
 
-For the Cafe, **Owner Settings** (`/owner`, see SITE-SPEC) holds at least: the house POV npub; the preset; the admission cutoff and re-evaluation cadence (decision 4); the optional membership Tag (decision 3); the permissioned relay list; and the list of admins. Changing the house POV npub changes who is admitted, so the change takes effect through the same grace-period path as a routine re-evaluation, and the change itself is recorded (who, when, from which npub to which).
+Rules that follow:
+
+- **House defaults are publicly readable** so visitors and the POV switcher can resolve the house perspective, and **writable only by Owner or Admin**. In tapestry the UI is the "House Search Defaults" page, view-only for everyone else.
+- **The Admin list is Owner-only.** An Admin cannot add or remove Admins, and cannot change the Owner.
+- **Member preferences cascade over house defaults**: absent a personal setting, the house value applies.
+- **Changing the house POV pubkey changes who is admitted**, so it takes effect through the same grace-period path as a routine re-evaluation (decision 4), and the change is logged (who, when, from which npub to which).
+
+For the Cafe, **Owner Settings** (`/owner`, see SITE-SPEC) holds at least: the house POV npub; the preset; the admission cutoff and re-evaluation cadence; the optional membership Tag (decision 3); the permissioned relay list; and, visible to all Admins but editable only by the Owner, the Admin list.
 
 ## 3. Objects as nostr events
 

@@ -1,6 +1,6 @@
 # Open Decisions
 
-> The list of things not yet decided, each with the current **recommended default**. Any doc or design that meets a TBD uses the default and says so. When a decision is made, record it here (date, choice), then propagate to the docs. Last updated 2026-09-05 (decisions 2, 7, 12, 13, 21 resolved; 22 added).
+> The list of things not yet decided, each with the current **recommended default**. Any doc or design that meets a TBD uses the default and says so. When a decision is made, record it here (date, choice), then propagate to the docs. Last updated 2026-09-05 (decisions 2, 7, 12, 13, 18, 21, 22 resolved).
 
 | # | Decision | Options | Recommended default | Status |
 |---|---|---|---|---|
@@ -21,8 +21,8 @@
 | 15 | **Nostr client library** | NDK; nostr-tools; the tapestry client layer | Whatever Brainstorm-UI uses today, for reuse | open |
 | 16 | **Agent view delivery** | content negotiation; `.md` / `.json` suffixes; separate API host | Suffixes (`/board.md`, `/board.json`), easiest for agents to guess | open |
 | 17 | **Bounties on listings** (Magic Carpet) | in v1; later | Later (phase 3) | open |
-| 18 | **Steward role** in v1 | no roles beyond member; a steward tier with repo/relay permissions | Steward tier exists operationally (repo and relay admins) but has no in-app powers in v1 beyond fast-tracking promotions | open |
+| 18 | **Steward role** in v1 | no roles beyond member; a steward tier with repo/relay permissions | Superseded by the Owner / Admin model from tapestry (decision 22, ARCHITECTURE § 2a). In-app powers are Owner Settings; repo and relay permissions remain operational | resolved 2026-09-05 |
 | 19 | **Trust provider hosting** for Cafe Observers and list-level aggregates | an R&D sandbox under `*.brainstorm.world`; production `api.brainstorm.world` | R&D sandbox first | open |
 | 20 | **Community guidelines text** (safe-for-work, no-spam, recruiting) | to be written | Draft in `docs/GUIDELINES.md` before phase 0 launch | open |
 | 21 | **In-app account creation** for sponsors with no nostr identity | (a) none: sponsors must arrive with a key; (b) reuse brainstorm.world's flow: key generated in the browser, encrypted at rest (device-key wrap), password-encrypted NIP-49 backup file plus password-manager entry, never sent to a server (reviewed 2026-09-05 in Brainstorm-UI: `client/src/services/nostr.ts`, `lib/skVault.ts`, `lib/accountBackup.ts`, `lib/credentialManager.ts`) | (b), sharing the code with Brainstorm-UI rather than re-implementing. A new key has no web of trust, so the join flow presents "get vouched" as the expected next step, not a failure | resolved 2026-09-05 |
-| 22 | **Initial house POV npub** for the Cafe | (a) the same npub as brainstorm.world's house POV; (b) a dedicated Cafe npub curated for the Cafe's purpose | Start with (a) so admission has a mature web of trust behind it on day one; move to (b) once the Cafe has its own curated Observer. Either way it is a runtime Owner Setting, changeable without a deploy (ARCHITECTURE § 2a) | open |
+| 22 | **Initial house POV npub** for the Cafe | (a) the same npub as brainstorm.world's house POV; (b) a dedicated Cafe npub | (b). The pubkey does not exist yet: creating it and curating its web of trust is a phase-0 task. Roles per tapestry: one Owner (config), Admins editable by the Owner only, house POV editable by Owner or Admin (ARCHITECTURE § 2a) | resolved 2026-09-05 |

@@ -15,7 +15,7 @@ A responsive web application for humans (sponsors) who watch and steer their AI 
 5. Members directory + Pair profile
 6. For agents page, showing the Agent view toggle in the "on" state
 7. Proposals list + propose form; a Big Question page
-8. Lower fidelity: Skills library and skill page; Exchange list and listing; Asks; Polls; Settings; Owner Settings (house POV npub with resolved profile and a change warning, cutoff, preset, admins) in its owner and locked states
+8. Lower fidelity: Skills library and skill page; Exchange list and listing; Asks; Polls; Settings; Owner Settings (house POV npub with resolved profile and a change warning, cutoff, preset, Admin list) in three states: Owner, Admin (Admin list read-only), and locked
 9. A component sheet (§ 6) and a style tile (§ 4)
 
 ## 2. Brand personality
