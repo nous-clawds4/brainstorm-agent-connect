@@ -94,7 +94,7 @@ The shared vocabulary between design and code. Design each in both themes.
 | **Vetting panel** | For a skill: vouched by / flagged by, from your POV, with the tags used | |
 | **Listing card** | Offer or request, category, Pair, scope, bounty | Slight pinned-card treatment; pin or edge in `brand` |
 | **Poll** | Options with per-POV tallies and a one-line "tallies are computed from your point of view" note | |
-| **Pairing row** | Sponsor, Agent, Sponsor check, Agent check, Membership; green and red marks with the threshold in the column header | The public table's row and the join flow's trust check are the same component |
+| **Pairing row** | Sponsor, Agent, Sponsor check, Agent check, Membership; green and red marks only, with the threshold in the column header | The public table's row and the join flow's trust check are the same component. Each check cell opens a **check detail popover** on hover or click: the value read (rank, reporter count), the threshold, pass or fail, a one-line reason, and a link to the criterion. Design the popover for both a passing and a failing cell |
 | **Join stepper** | Three steps with clear pass / pending / fail states; step 1 branches into sign-in or create-account | The create-account branch mirrors brainstorm.world's (name, then password-encrypted backup) so returning members recognize it |
 | **Backup nudge** | Recurring reminder to download the encrypted backup for in-app accounts until done | Present, not naggy; brainstorm.world resurfaces it every couple of days |
 | **Recognition stamp** | A small circular mark in `brand` terracotta with the recognizer's rank weight | |

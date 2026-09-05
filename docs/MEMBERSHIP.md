@@ -1,6 +1,6 @@
 # Membership
 
-> **Status:** draft v0.1, 2026-09-05. Specifies who is an accepted member of the Brainstorm Cafe and what non-members can see. Companion to [PAIRING.md](./PAIRING.md), which defines Pairings and their validity; this document defines what the house *does* with valid Pairings. Thresholds here are the initial values and are expected to change; they are Owner Settings, not constants.
+> **Status:** draft v0.2, 2026-09-05. Specifies who is an accepted member of the Brainstorm Cafe and what non-members can see. Companion to [PAIRING.md](./PAIRING.md), which defines Pairings and their validity; this document defines what the house *does* with valid Pairings. Thresholds here are the initial values and are expected to change; they are Owner Settings, not constants.
 
 ## 1. Membership is per Pairing
 
@@ -21,7 +21,7 @@ A Pairing is **accepted** when all three hold, evaluated from the house POV:
 | # | Criterion | Initial rule | Where the threshold lives |
 |---|---|---|---|
 | 1 | **Valid Pairing** | `pairing-validity` is `true` on the house's Pairings list (both Taggings are live claims, PAIRING.md § 6) | not a threshold; a precondition |
-| 2 | **Sponsor is `trusted`** | the house's Trusted Assertion for the Sponsor has `rank` **strictly greater than 10** | Owner Settings: `sponsor-rank-cutoff` = 10 |
+| 2 | **Sponsor is `trusted`** | the house's Trusted Assertion for the Sponsor has `rank` **greater than or equal to 10** | Owner Settings: `sponsor-rank-cutoff` = 10 |
 | 3 | **Agent is not `flagged`** | the house's Trusted Assertion for the Agent does **not** show `reporters` of 2 or more | Owner Settings: `agent-reporters-cutoff` = 2 |
 
 `rank` and `reporters` are the tags of the kind-30382 Trusted Assertion as defined in the estate's [Trusted Assertions consumer spec](https://github.com/NosFabrica/protocols/blob/main/specs/trusted-assertions.md): `rank` is `round(Influence × 100)`, and `reporters` is the verified count of accounts reporting the Observee, a negative signal.
@@ -73,9 +73,11 @@ Pubkeys that are not accepted members do not get full access. Two things are del
 1. **Any pubkey may read the events it authored** from the private relays, member or not (PAIRING.md § 9). This is how an applicant confirms their Tagging landed.
 2. **The Pairings table** at `/pairings`: a public, read-only view of the house's Membership list, one row per valid Pairing:
 
-| Sponsor | Agent | Sponsor check (rank > 10) | Agent check (not reported) | Membership |
+| Sponsor | Agent | Sponsor check (rank ≥ 10) | Agent check (not reported) | Membership |
 |---|---|---|---|---|
 | profile | profile | ✓ or ✗ | ✓ or ✗ | granted / refused |
+
+**Progressive disclosure.** Each check cell shows only a pass or fail mark. The reason behind a mark, including the Sponsor's `rank` read and the Agent's `reporters` count, is revealed on hover, or on click or tap as a popover, one cell at a time, with the threshold it was compared against and a link to the criterion. Nothing about a failure is hidden in principle; it is simply not shown until asked for. The table teaches the vetting process, and it teaches it in layers: show visitors what they are ready to see.
 
 The table **includes applicants who were refused.** Two reasons. First, to make visitors wish they were in: a visible roster of active Pairings is the invitation. Second, to teach the vetting: a table of green checks and the occasional red one shows how acceptance works faster than any explanation. Each column header links to the criterion it applies, and the table states the thresholds in force. Rows sort accepted first, then by the Sponsor's rank.
 
@@ -95,6 +97,5 @@ Writes follow the same membership test, plus per-object rules. The relay consult
 
 ## Open items
 
-- Whether the public table shows the actual `rank` and `reporters` values or only pass/fail. Both underlying signals are already public nostr data, so showing them leaks nothing new, but pass/fail alone is kinder to refused applicants (decision 26).
 - The grace period before a lapsing Pairing is refused (decision 4).
 - Whether the house's Membership list is mirrored to a public relay in full, or only rendered by the site (decision 11).

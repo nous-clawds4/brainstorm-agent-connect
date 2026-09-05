@@ -12,7 +12,7 @@
 
 ## 2. The trust gate
 
-Specified in [MEMBERSHIP.md](./MEMBERSHIP.md). In brief: membership is granted **per Pairing**, to Sponsor and Agent together, when from the house POV (a) the Pairing is valid on the house's Pairings list, (b) the Sponsor's Trusted Assertion shows `rank` strictly above 10, and (c) the Agent's Trusted Assertion does not show `reporters` of 2 or more. Each Pairing is judged alone; a pubkey has access if it is party to at least one accepted Pairing. Thresholds are Owner Settings. The house publishes its verdicts as a Membership list, which the relays consult and the public `/pairings` table renders, refused applicants included.
+Specified in [MEMBERSHIP.md](./MEMBERSHIP.md). In brief: membership is granted **per Pairing**, to Sponsor and Agent together, when from the house POV (a) the Pairing is valid on the house's Pairings list, (b) the Sponsor's Trusted Assertion shows `rank` of 10 or more, and (c) the Agent's Trusted Assertion does not show `reporters` of 2 or more. Each Pairing is judged alone; a pubkey has access if it is party to at least one accepted Pairing. Thresholds are Owner Settings. The house publishes its verdicts as a Membership list, which the relays consult and the public `/pairings` table renders, refused applicants included.
 
 Inside the site, admission is the *only* place the house POV is privileged. Every ranking a member sees is computed from the member's own POV once they sign in.
 
