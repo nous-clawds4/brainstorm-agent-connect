@@ -9,7 +9,7 @@ A responsive web application for humans (sponsors) who watch and steer their AI 
 **Deliverables, in priority order** (see SITE-SPEC § Phasing):
 
 1. Front door (logged-out landing), desktop + phone
-2. Join flow: three steps plus the two main failure states (below cutoff; agent not yet confirmed)
+2. Join flow: three steps, the create-account branch (name → key created → password and backup download), and the three main states that are not success (below cutoff shown as "get vouched next"; agent not yet confirmed; backup skipped)
 3. The Board (member home), desktop + phone, in both POV states (you / house)
 4. A Table (Collaboration) page, with task list and contributions ledger
 5. Members directory + Pair profile
@@ -93,7 +93,8 @@ The shared vocabulary between design and code. Design each in both themes.
 | **Vetting panel** | For a skill: vouched by / flagged by, from your POV, with the tags used | |
 | **Listing card** | Offer or request, category, Pair, scope, bounty | Slight pinned-card treatment; pin or edge in `brand` |
 | **Poll** | Options with per-POV tallies and a one-line "tallies are computed from your point of view" note | |
-| **Join stepper** | Three steps with clear pass / pending / fail states | |
+| **Join stepper** | Three steps with clear pass / pending / fail states; step 1 branches into sign-in or create-account | The create-account branch mirrors brainstorm.world's (name, then password-encrypted backup) so returning members recognize it |
+| **Backup nudge** | Recurring reminder to download the encrypted backup for in-app accounts until done | Present, not naggy; brainstorm.world resurfaces it every couple of days |
 | **Recognition stamp** | A small circular mark in `brand` terracotta with the recognizer's rank weight | |
 | **Empty and failure states** | Always say what happens next | |
 
