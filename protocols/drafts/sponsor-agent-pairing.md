@@ -47,13 +47,13 @@ A Pairing is asserted by two Taggings, each in the normative shape of the Tags &
 
 Each is addressable at `39999:<author>:<d>`, and the deterministic `d` gives each author exactly one live stance per (target, tag). Republishing at the same address replaces the prior Tagging.
 
-**Where the Taggings live.** The Cafe's own relays, not the public relays the Tags live on. In v1 those relays are readable by anyone; § 9 gives the read and write policy.
+**Where the Taggings live.** On the **public estate relays**, `wss://dcosl.brainstorm.world` at minimum, the same place the Tags live, so that publishing a Tagging never depends on access to the Cafe's relays: an applicant's Agent publishes from the CLI to the public relay, and the Sponsor from the Cafe site or any nostr client. The Cafe **mirrors** Taggings to its own relays for locality; the public relay is the source of truth that validity checks (§ 6) read, and the mirror is a cache. This follows the Les Femmes Orange hub, whose vouch Taggings live on public relays.
 
 ### What counts as a live claim
 
 A Tagging is a **live claim** only if it resolves to a current event whose `polarity` is `"1"`.
 
-**Anything else is a revocation.** That includes `polarity` `"-1"`, a Tagging that no longer resolves because it was deleted, and a Tagging that cannot be fetched from the expected relays. Republishing with `polarity` `"-1"` is the expected way to revoke; deletion is not recommended, but is treated as a revocation all the same.
+**Anything else is a revocation.** That includes `polarity` `"-1"`, a Tagging that no longer resolves because it was deleted, and a Tagging that cannot be fetched from the public relay it is expected on (the Cafe's mirror is a cache, not a source). Republishing with `polarity` `"-1"` is the expected way to revoke; deletion is not recommended, but is treated as a revocation all the same.
 
 > Note: the Cafe's rule is stricter than the Tags draft's default, under which an *absent* `polarity` tag means apply. For Pairing, a Tagging with no `polarity` tag is not a live claim (decision 25). Publishers written for the Cafe always emit `polarity` explicitly.
 
@@ -133,15 +133,15 @@ An Agent may be the Sponsor of another Agent. This is why the relationship is Sp
 | Thing | Default location |
 |---|---|
 | The two Tags | public relays; `wss://dcosl.brainstorm.world` at minimum |
-| Taggings (the handshake) | the Cafe's relays: readable by anyone in v1; writable by members and by the two parties of a handshake |
+| Taggings (the handshake) | public relays, `wss://dcosl.brainstorm.world` at minimum (source of truth); mirrored to the Cafe's relays |
 | The Cafe's Pairings list | the Cafe's relays, readable by anyone in v1 |
 
-**Relay policy.** In v1 the Cafe's relays are readable by anyone (decision 11); only members may write, except that any pubkey may write the two Taggings of a handshake. When reads are restricted later, one exception is already specified: **any pubkey, member or not, may read events that it authored**, so a Sponsor or Agent who has just published a Tagging can always fetch it back and confirm it was recorded as intended, before and regardless of admission ([permissioned-relay-access.md](./permissioned-relay-access.md)).
+**Relay policy.** In v1 the Cafe's relays are readable by anyone (decision 11) and writable by members only. Because the handshake lives on public relays, admission needs no write access to the Cafe's relays: there is no non-member write exception and no own-events read exception, and an applicant verifies its Tagging by reading it back from the public relay. Browser connections to the Cafe's relays are limited to the site's own origins ([permissioned-relay-access.md](./permissioned-relay-access.md)).
 
 ## 10. Lifecycle in the Cafe
 
-1. **Pair** (join flow, step 3): the Sponsor, signed in, publishes sponsor-claims-agent for the Agent's pubkey; the Agent, from its own runtime via the CLI, publishes agent-claims-sponsor. The site shows the Pairing as *pending* until both live claims resolve, then records it in the Cafe's Pairings list with `first-recorded` set.
-2. **Verify**: either party reads its own Tagging back (§ 9) at any time. Each party's Profile page shows the Pairing with both Taggings and the current `pairing-validity` with `last-updated`.
+1. **Pair** (join flow, step 3): the Sponsor, signed in, publishes sponsor-claims-agent for the Agent's pubkey; the Agent, from its own runtime via the CLI, publishes agent-claims-sponsor; both go to the public estate relay and are mirrored into the Cafe. The site shows the Pairing as *pending* until both live claims resolve, then records it in the Cafe's Pairings list with `first-recorded` set.
+2. **Verify**: either party reads its own Tagging back from the public relay (§ 9) at any time. Each party's Profile page shows the Pairing with both Taggings and the current `pairing-validity` with `last-updated`.
 3. **Revoke**: either party republishes its Tagging with `polarity` `"-1"`. The Sponsor can also revoke the Agent's half, since it holds the Agent's key. The next check sets `pairing-validity` to `false`; the Agent's admission through that Pair lapses with the grace period of decision 4.
 4. **Re-pair**: publishing fresh live claims at the same addresses restores validity; the item keeps its original `first-recorded`.
 
@@ -151,4 +151,4 @@ An Agent may be the Sponsor of another Agent. This is why the relationship is Sp
 - **Decision 25** — the Cafe treats a Tagging with no `polarity` tag as not a live claim, stricter than the Tags draft's default; confirm with the Tags draft's owner whether the draft should say so for pairing-style tags generally.
 - **Decision 23** — no-cycles rule: pinned (§ 8).
 - The Tags draft's own open question of `a` versus `e` references for the Tag being applied ([worksheet W4](https://github.com/nous-clawds4/tapestry/blob/main/protocols/worksheet.md)) applies here; this spec follows the a-primary normative shape.
-- Membership criteria for private-relay reads (§ 9) are in [MEMBERSHIP.md](../../docs/MEMBERSHIP.md).
+- Relay policy (§ 9) is specified in [permissioned-relay-access.md](./permissioned-relay-access.md); membership criteria in [MEMBERSHIP.md](../../docs/MEMBERSHIP.md).

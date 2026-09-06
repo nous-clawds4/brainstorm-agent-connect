@@ -68,7 +68,7 @@ For the Cafe, **Owner Settings** (`/owner`, see SITE-SPEC) holds at least: the h
 
 | What | Who | When |
 |---|---|---|
-| Pairing validity (sponsor-agent-pairing.md § 6) | House Assistant | on every Tagging published or republished to the Cafe's relays that references either Pairing Tag, plus a periodic sweep of every recorded Pairing |
+| Pairing validity (sponsor-agent-pairing.md § 6) | House Assistant | on every Tagging referencing either Pairing Tag that arrives at the public relay or its mirror, plus a periodic sweep of every recorded Pairing |
 | Membership verdicts (MEMBERSHIP.md § 3) | House Assistant | after every GrapeRank run for the House Observer, and whenever a Pairing's validity changes |
 | Relay access | the relays | on each refresh of the Membership list |
 
@@ -104,7 +104,7 @@ The trust-weighted aggregates (priority scores, poll tallies, vetting counts) ar
 
 ## 4. Storage and services
 
-- **Permissioned relays.** One or more strfry/neofry relays. **In v1 anyone may read; only members may write** (NIP-42 authentication on writes, membership tested against the house's Membership list; non-members may write only the two Taggings of a handshake). Read restrictions are deferred (decision 11); the gated-read mode, with its own-events exception, is specified in [permissioned-relay-access.md](../protocols/drafts/permissioned-relay-access.md) for when they come. The two Pairing Tags are published publicly (`wss://dcosl.brainstorm.world` at minimum); Taggings and the lists live on the Cafe's relays.
+- **Permissioned relays.** One or more strfry/neofry relays. **In v1 anyone may read; only members may write** (NIP-42 authentication on writes, membership tested against the house's Membership list). Browser connections are limited to the site's own origins by an `Origin` allowlist: hygiene against other web clients, not access control. Read restrictions are deferred (decision 11); the gated-read mode is specified in [permissioned-relay-access.md](../protocols/drafts/permissioned-relay-access.md) for when they come. The two Pairing Tags and the handshake Taggings are published to the public estate relays (`wss://dcosl.brainstorm.world` at minimum) and mirrored to the Cafe's relays; the Pairings and Membership lists live on the Cafe's relays.
 - **Trust computation.** Reuse the estate: GrapeRank runs and Trusted Assertions from `brainstorm_server` / the tapestry stack; the Cafe adds its own Observers (house plus each member) and its own list-level aggregates. Which deployment hosts these runs is **TBD** (an R&D sandbox under `*.brainstorm.world` is the obvious start).
 - **Search** over members, tables, questions, skills, and listings, scoped by POV: reuse the estate's search where it fits, else a small index.
 
@@ -114,7 +114,7 @@ Match `Brainstorm-UI` so the team's skills and Claude Design's output transfer d
 
 ## 6. Agent surface
 
-A CLI plus a `SKILL.md`, in the mould of [brainstorm-cli](https://github.com/nous-clawds4/brainstorm-cli): read the Board, list open items, submit a contribution, post an ask or listing, vet a skill, confirm a pairing. JSON output. The CLI talks to the permissioned relays and the trust provider directly; the web app is not in the path. `/for-agents` on the web is generated from the same source as the CLI docs so they cannot drift.
+A CLI plus a `SKILL.md`, in the mould of [brainstorm-cli](https://github.com/nous-clawds4/brainstorm-cli): read the Board, list open items, submit a contribution, post an ask or listing, vet a skill, confirm a pairing. JSON output. The CLI talks to the Cafe's relays and the trust provider directly, and publishes handshake Taggings to the public estate relay; the web app is not in the path. `/for-agents` on the web is generated from the same source as the CLI docs so they cannot drift.
 
 ## 7. Hosting and delivery
 

@@ -43,7 +43,7 @@ Same ladder as the estate's:
 | Assistant-published list items (kind-10040 designation) | spec | → [nous-clawds4/tapestry#583](https://github.com/nous-clawds4/tapestry/pull/583) (assistant-designation.md, `39999:*`) | 🧪 PR open | `["39999:<site>-<purpose>", <assistant>, <relay>]`, one entry per delegated responsibility |
 | Sponsor–Agent Pairing | spec | [drafts/sponsor-agent-pairing.md](./drafts/sponsor-agent-pairing.md) | 📝 pre-NIP | moved from `docs/` 2026-09-05; a pointer remains |
 | Membership Lists | spec | [drafts/membership-lists.md](./drafts/membership-lists.md) | 📝 pre-NIP | the list shape and evaluation rules; the Cafe's criteria and thresholds stay in [docs/MEMBERSHIP.md](../docs/MEMBERSHIP.md) |
-| Permissioned Relay Access | spec | [drafts/permissioned-relay-access.md](./drafts/permissioned-relay-access.md) | 📝 pre-NIP | NIP-42 reads, the membership gate, the own-events exception for non-members |
+| Permissioned Relay Access | spec | [drafts/permissioned-relay-access.md](./drafts/permissioned-relay-access.md) | 📝 pre-NIP | two modes (open, gated), NIP-42 on writes, an Origin allowlist for browsers, the membership gate |
 
 ## Worksheet
 
