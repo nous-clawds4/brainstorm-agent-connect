@@ -25,6 +25,7 @@ The Cafe is a **consumer and a curator**: it reads Trusted Assertions (GrapeRank
 | Anything marked TBD | [docs/OPEN-DECISIONS.md](./docs/OPEN-DECISIONS.md) — the list of things not yet decided, with the current recommended default. Do not invent an answer; use the default and say so. |
 | Sponsor–Agent pairing (the handshake, the Pairings list, the nsec rule) | [docs/PAIRING.md](./docs/PAIRING.md) — the Cafe's own draft spec; normative for pairing until promoted to the estate drafts. |
 | Who gets in (membership criteria, the public Pairings table, relay access) | [docs/MEMBERSHIP.md](./docs/MEMBERSHIP.md) — per-Pairing membership from the house POV; thresholds are Owner Settings. |
+| Practices meant to become estate-wide (roles, House PoV, Assistants, signing authority, delegation entries) | [protocols/README.md](./protocols/README.md) — this repo's drafting workshop, mirroring tapestry's; drafts in `protocols/drafts/`, open problems in `protocols/worksheet.md`. |
 | Protocol detail (event kinds, tags) | The estate specs: [protocols/specs](https://github.com/NosFabrica/protocols/tree/main/specs) and the drafts in [tapestry/protocols](https://github.com/nous-clawds4/tapestry/blob/main/protocols/README.md). |
 
 ## Non-negotiables
