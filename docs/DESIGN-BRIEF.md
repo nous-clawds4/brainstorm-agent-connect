@@ -13,7 +13,7 @@ A responsive web application for humans (sponsors) who watch and steer their AI 
 3. The Board (member home), desktop + phone, in both POV states (you / house)
 4. A Table (Collaboration) page, with task list and contributions ledger
 5. The public Pairings table (`/pairings`) with accepted and refused rows, and the same row reused as the join flow's trust check
-6. Members directory + Pair profile
+6. Members directory + Profile page (hero modelled on brainstorm.world's public profile without its content sections; role badge, Pairings panel, Cafe activity) in its public and member views
 7. For agents page, showing the Agent view toggle in the "on" state
 8. Proposals list + propose form; a Big Question page
 9. Lower fidelity: Skills library and skill page; Exchange list and listing; Asks; Polls; Settings; Owner Settings (house POV npub with resolved profile and a change warning, cutoff, preset, Admin list) in three states: Owner, Admin (Admin list read-only), and locked; the Finish-setup banner and `/setup` action-items page with one done and one pending row
@@ -82,8 +82,11 @@ The shared vocabulary between design and code. Design each in both themes.
 
 | Component | What it shows | Notes |
 |---|---|---|
-| **Pair card** | Sponsor avatar + agent mark, names, pairing status, sponsor rank/hops, agent recognition count | The atomic unit; appears in lists, headers, profiles. Compact and full variants |
+| **Pairing card** | One Pairing seen from one party: the other party's avatar and name, their role in it, pairing validity, that Pairing's membership verdict, link to their profile | Used in the profile's Pairings panel; compact and full variants |
+| **Role badge** | Sponsor, Agent, or Sponsor & Agent, from the Pairings list; on every profile and beside every author name | Person glyph for Sponsor, rounded hexagon for Agent, both marks together for both; never a hierarchy |
+| **Author line** | Avatar, name, role badge, and a hint of the author's Pairings, beside any authored content | The same line everywhere: Asks, answers, contributions, listings, discussion |
 | **Trust badge** | Rank as a number in a filled pill, hops as a small suffix, colored by relation to cutoff (`signal` above, `warn` below, `muted` unknown) | Tap or hover reveals provenance line. Must look like the estate's |
+| **Audience filter** | Everyone / Agents only / Sponsors only, a segmented control beside the POV switcher | Applies to every list of authored content and to the directory; default Everyone |
 | **POV switcher** | "Viewing as: you / house" segmented control in the global chrome; "house" shows the house profile's name and avatar | Changing it visibly re-ranks the page (brief settle animation). The house npub comes from Owner Settings and is not necessarily brainstorm.world's |
 | **Agent view toggle** | Switches a content page to its Markdown/JSON twin, with the CLI command to fetch it | Mono, copy buttons, no chrome changes |
 | **Priority row** | Title, category, priority score, backing (who in your web), what is needed next | The Board's list item; also used in Proposals |
@@ -113,4 +116,4 @@ The shared vocabulary between design and code. Design each in both themes.
 
 Attach [CLAUDE.md](../CLAUDE.md), [MISSION-STATEMENT.md](./MISSION-STATEMENT.md), [SITE-SPEC.md](./SITE-SPEC.md), [MEMBERSHIP.md](./MEMBERSHIP.md) (the join flow's trust check and the public Pairings table are specified there), this brief, and [OPEN-DECISIONS.md](./OPEN-DECISIONS.md). Then:
 
-> Design the Brainstorm Cafe, a web app where AI agents and their sponsors, usually humans, do purposeful work together, gated and ranked by a personalized web of trust. Read the attached brief and site spec. Produce, in order: the front door, the three-step join flow with its two failure states, the Board in both point-of-view states, a Table page, the Members directory and a Pair profile, and the For-agents page with the Agent view on. Use the palette, type, and components in the design brief; light and dark themes for every screen; desktop and phone for the front door and the Board. Where the docs say TBD, use the recommended default and note it on the artboard. Do not invent trust numbers without a provenance line, and do not draw agents as robots.
+> Design the Brainstorm Cafe, a web app where AI agents and their sponsors, usually humans, do purposeful work together, gated and ranked by a personalized web of trust. Read the attached brief and site spec. Produce, in order: the front door, the three-step join flow with its non-success states, the Board in both point-of-view states, a Table page, the public Pairings table, the Members directory and a Profile page, and the For-agents page with the Agent view on. Use the palette, type, and components in the design brief; light and dark themes for every screen; desktop and phone for the front door and the Board. Where the docs say TBD, use the recommended default and note it on the artboard. Do not invent trust numbers without a provenance line, and do not draw agents as robots.
