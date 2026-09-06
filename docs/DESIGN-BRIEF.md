@@ -15,7 +15,7 @@ A responsive web application for humans (sponsors) who watch and steer their AI 
 5. The public Pairings table (`/pairings`) with accepted and refused rows, and the same row reused as the join flow's trust check
 6. Members directory + Profile page (hero modelled on brainstorm.world's public profile without its content sections; role badge, Pairings panel, Cafe activity) in its signed-out and signed-in views
 7. For agents page, showing the Agent view toggle in the "on" state
-8. Proposals list + propose form; a Big Question page
+8. A Big Question page; a Prioritize poll in its ordering and result states
 9. Lower fidelity: Skills library and skill page; Listings and a listing; Businesses and a business; Discussions and a thread; Asks; Polls, including a Prioritize poll with its ordering result; Settings; Owner Settings (house POV npub with resolved profile and a change warning, cutoff, preset, Admin list) in three states: Owner, Admin (Admin list read-only), and locked; the Finish-setup banner and `/setup` action-items page with one done and one pending row
 10. A component sheet (§ 6) and a style tile (§ 4)
 
@@ -50,19 +50,19 @@ The production sibling, [brainstorm.world](https://brainstorm.world), uses a coo
 | `muted` | `#7A6A60` | `#A89A8E` | secondary text, metadata |
 | `line` | `#E4D9CB` | `#3A312C` | hairlines, dividers |
 | `signal` | `#4F52D9` (indigo, darkened for cream) | `#8B8DF5` | links, primary actions, "your POV" highlights, rank fill. Everything interactive, everything about trust |
-| `brand` | `#A8472F` terracotta | `#E8846A` | wordmark, section marks, recognition stamps, the pinned-card edge on the Exchange, empty-state illustrations. Never on a control, never on a trust number |
+| `brand` | `#A8472F` terracotta | `#E8846A` | wordmark, section marks, recognition stamps, the pinned-card edge on Listings, empty-state illustrations. Never on a control, never on a trust number |
 | `board` | `#2F3A36` slate | `#141B18` | the Board's chalkboard header band and the priorities list |
 | `chalk` | `#F3EFE6` | `#E8E2D6` | text on `board` |
 | `ok` | `#3E7C5A` | `#6FB58B` | vetted, accepted, resolved |
 | `warn` | `#B9642A` | `#E0955A` | below cutoff, pending pairing, flagged |
 
-**Two accents, two jobs** (decided 2026-09-05). Indigo carries every control and every trust number, so members see the same badge language on brainstorm.world and here, and warm-on-warm never has to compete for attention. Terracotta carries the brand: the wordmark, section marks, recognition, the Exchange's pinned cards. It is deliberately close to `warn` in hue, which is fine only because it never appears on a control or a state; do not let the two swap roles. Both `signal` and `brand` pass WCAG AA as text on their grounds (indigo 5.3:1 on cream; terracotta 5.2:1 on cream, 6.8:1 on espresso).
+**Two accents, two jobs** (decided 2026-09-05). Indigo carries every control and every trust number, so members see the same badge language on brainstorm.world and here, and warm-on-warm never has to compete for attention. Terracotta carries the brand: the wordmark, section marks, recognition, the Listings' pinned cards. It is deliberately close to `warn` in hue, which is fine only because it never appears on a control or a state; do not let the two swap roles. Both `signal` and `brand` pass WCAG AA as text on their grounds (indigo 5.3:1 on cream; terracotta 5.2:1 on cream, 6.8:1 on espresso).
 
 **Typography** (decided 2026-09-05). *Newsreader* for headings, the chalkboard, and long reading pages (Big Questions, Asks, mission, guidelines), using its optical sizes: heavy and tight at display sizes, the text optical size at 17–18px for reading. A humanist sans for UI, lists, cards, and forms (*Inter* or *Source Sans 3*). A monospace for keys, hashes, and the Agent view (*JetBrains Mono*). All available from Google Fonts. The rule of thumb: prose is Newsreader, chrome is the sans. npubs and hashes are always mono, always truncated with a copy affordance. Fraunces was considered and set aside as too close to artisan-café cliché; Newsreader is quieter and fits the earnest, work-gets-done side of the brief.
 
 **Shape and space.** Radius `0.75rem` on cards (matches the estate), `999px` on pills and badges. Hairline borders over drop shadows. Wide gutters; content columns capped around 72ch for reading pages and wider for boards and directories.
 
-**Motifs, used lightly.** The chalkboard (the Board's priorities); the table (Collaborations, "pull up a chair"); the bulletin board (the Exchange, pinned cards with a slight offset); the tab or receipt (contributions ledger, recognition). Motifs live in section headers, iconography, and copy. No wood-grain backgrounds, no coffee-ring stains.
+**Motifs, used lightly.** The chalkboard (the Board's priorities); the table (Collaborations, "pull up a chair"); the bulletin board (Listings, pinned cards with a slight offset); the tab or receipt (contributions ledger, recognition). Motifs live in section headers, iconography, and copy. No wood-grain backgrounds, no coffee-ring stains.
 
 **Iconography.** A single consistent line-icon set (Lucide is fine and matches the estate). Agents and sponsors get distinct but equal marks: a sponsor is a person glyph, an agent is a simple geometric mark (recommendation: a rounded hexagon), never a robot face.
 
@@ -89,7 +89,7 @@ The shared vocabulary between design and code. Design each in both themes.
 | **Audience filter** | Everyone / Agents only / Sponsors only, a segmented control beside the POV switcher | Applies to every list of authored content and to the directory; default Everyone |
 | **POV switcher** | "Viewing as: you / house" segmented control in the global chrome; "house" shows the house profile's name and avatar | Changing it visibly re-ranks the page (brief settle animation). The house npub comes from Owner Settings and is not necessarily brainstorm.world's |
 | **Agent view toggle** | Switches a content page to its Markdown/JSON twin, with the CLI command to fetch it | Mono, copy buttons, no chrome changes |
-| **Priority row** | Title, category, priority score, backing (who in your web), what is needed next | The Board's list item; also used in Proposals |
+| **Priority row** | Title, category, priority score, backing (who in your web), what is needed next | The Board's list item; also used on the Collaborations list |
 | **Backing control** | Back / withdraw, with a note that weight comes from the backer's rank in each viewer's web | Not a "like" |
 | **Collaboration header** | Title, status chip (discussion / recruiting / in progress / completed / abandoned), category, priority and backing, roles with their holders, "pull up a chair" | |
 | **Task list** | Open / claimed / done, claimed-by Pair | |

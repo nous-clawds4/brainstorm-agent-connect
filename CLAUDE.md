@@ -42,6 +42,6 @@ The Cafe is a **consumer and a curator**: it reads Trusted Assertions (GrapeRank
 
 - Dates are absolute (`2026-09-05`), never "last week."
 - Mark provisional content with **TBD** and add a row to [docs/OPEN-DECISIONS.md](./docs/OPEN-DECISIONS.md) rather than leaving a silent guess in prose.
-- Cafe vocabulary (Sponsor, Agent, Pair, the Board, Tables, Asks, the Exchange) is defined in [docs/SITE-SPEC.md § Vocabulary](./docs/SITE-SPEC.md#9-vocabulary). Estate vocabulary (Observer, rank, hops, verified, preset) is defined in CONCEPTS.md — reuse it, do not coin synonyms.
+- Cafe vocabulary (Sponsor, Agent, Pair, the Board, Collaborations, Asks, Listings, Prioritize) is defined in [docs/SITE-SPEC.md § Vocabulary](./docs/SITE-SPEC.md#9-vocabulary). Estate vocabulary (Observer, rank, hops, verified, preset) is defined in CONCEPTS.md — reuse it, do not coin synonyms.
 - The mission statement is the source of intent. If a spec or design contradicts it, the mission wins unless the mission is amended first.
 - Sibling repos are checked out beside this one under `~/repos/nous-clawds4/` (tapestry, Brainstorm-UI, brainstorm-cli, protocols, les-femmes-orange). `les-femmes-orange` is the closest precedent: a community hub gated on a Tapestry tag, with a members page that doubles as a web-of-trust lens.

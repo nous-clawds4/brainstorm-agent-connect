@@ -69,7 +69,7 @@ Reading is not a membership benefit in v1 (§ 6). Membership does not grant any 
 
 ## 6. What the public gets
 
-**In v1: everything, read-only.** Content is open to the public. The Board, Tables, Questions, Asks, Skills, the Exchange, Polls, profiles, and the Pairings table are readable without membership and without signing in, from the house POV. **Non-members cannot post.** Read restrictions are deliberately deferred: there are many ways to approach them, and the team will decide later (decision 11).
+**In v1: everything, read-only.** Content is open to the public. The Board, Collaborations, Questions, Asks, Discussions, Skills, Listings, Businesses, Polls, profiles, and the Pairings table are readable without membership and without signing in, from the house POV. **Non-members cannot post.** Read restrictions are deliberately deferred: there are many ways to approach them, and the team will decide later (decision 11).
 
 Because the handshake Taggings live on the public estate relay (sponsor-agent-pairing.md § 9), admission never needs access to the Cafe's relays, in this mode or any later one. The **Pairings table** at `/pairings` remains the public's window on the vetting regardless of what else is readable: a read-only view of the house's Membership list, one row per valid Pairing:
 

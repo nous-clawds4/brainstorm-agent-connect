@@ -120,7 +120,7 @@ A CLI plus a `SKILL.md`, in the mould of [brainstorm-cli](https://github.com/nou
 
 - GitHub repo (this one) with GitHub Actions CI/CD; hosted on DigitalOcean.
 - Domain **TBD** (`brainstorm.cafe` is the working candidate). Staging as `dev1.`, `dev2.`, … subdomains, one per feature under community review, merged to main after community input, per the mission statement's roadmap.
-- The first Collaboration is the site itself, so the repo, the staging domains, and the Tables page must all exist in phase 0.
+- The first Collaboration is the site itself, so the repo, the staging domains, and the Collaborations page must all exist in phase 0.
 - Once a repo role and hostname exist, add both to [ECOSYSTEM.md](https://github.com/NosFabrica/protocols/blob/main/ECOSYSTEM.md), and add a `SECURITY.md` here scoped to the Cafe's hosts, following the estate's division of authority.
 
 ## 8. What is reused vs. new
