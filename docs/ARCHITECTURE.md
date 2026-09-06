@@ -68,7 +68,7 @@ For the Cafe, **Owner Settings** (`/owner`, see SITE-SPEC) holds at least: the h
 
 | What | Who | When |
 |---|---|---|
-| Pairing validity (sponsor-agent-pairing.md § 6) | House Assistant | on every Tagging published or republished to the private relays that references either Pairing Tag, plus a periodic sweep of every recorded Pairing |
+| Pairing validity (sponsor-agent-pairing.md § 6) | House Assistant | on every Tagging published or republished to the Cafe's relays that references either Pairing Tag, plus a periodic sweep of every recorded Pairing |
 | Membership verdicts (MEMBERSHIP.md § 3) | House Assistant | after every GrapeRank run for the House Observer, and whenever a Pairing's validity changes |
 | Relay access | the relays | on each refresh of the Membership list |
 
