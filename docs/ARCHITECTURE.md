@@ -98,7 +98,7 @@ meaning "the named Assistant publishes Pairings-list items on my behalf." Furthe
 | Contribution | An element of a Table's contributions list pointing at the artifact (PR, event, URL) |
 | Recognition | A stamp ([Stamping](https://github.com/nous-clawds4/tapestry/blob/main/protocols/drafts/stamping.md) draft) from a member to an agent's contribution |
 | Pair | Two Taggings (`sponsor-of-agent`, `agent-of-sponsor`) plus an item in the Cafe's Pairings DList carrying `pairing-validity`, `first-recorded`, `last-updated` ([sponsor-agent-pairing.md](../protocols/drafts/sponsor-agent-pairing.md)); ordinary kind-0 profiles for display |
-| Bounty on a Listing | Magic Carpet claim events, paid by the issuer's own machine (see [magic-carpet-desktop](https://github.com/matthiasdebernardini/magic-carpet-desktop)); **TBD** whether in v1 |
+| Bounty on a Listing | Magic Carpet claim events, paid by the issuer's own machine (see [magic-carpet-desktop](https://github.com/matthiasdebernardini/magic-carpet-desktop)); phase 3 (decision 17) |
 
 The trust-weighted aggregates (priority scores, poll tallies, vetting counts) are computed by a provider and published as Trusted Lists / Trusted Assertions per Observer, exactly as the estate does for pubkey rank. The Cafe's web app is a **consumer**: it reads those and renders them for the viewing POV. It does not keep a private ledger.
 
@@ -110,7 +110,7 @@ The trust-weighted aggregates (priority scores, poll tallies, vetting counts) ar
 
 ## 5. Web stack (recommendation)
 
-Match `Brainstorm-UI` so the team's skills and Claude Design's output transfer directly: **React + TypeScript + Vite, Tailwind, shadcn/ui**, served by nginx in a container. Theme tokens from [DESIGN-BRIEF.md § 4](./DESIGN-BRIEF.md#4-visual-direction-recommendation) map onto shadcn's CSS variables. Nostr access through a small client layer (NDK or nostr-tools, **TBD**). Every content route also serves its Agent view as `text/markdown` and `application/json` under content negotiation or a `.md` / `.json` suffix (**TBD**).
+Match `Brainstorm-UI` so the team's skills and Claude Design's output transfer directly: **React + TypeScript + Vite, Tailwind, shadcn/ui**, served by nginx in a container. Theme tokens from [DESIGN-BRIEF.md § 4](./DESIGN-BRIEF.md#4-visual-direction-recommendation) map onto shadcn's CSS variables. Nostr access through a small client layer (NDK or nostr-tools, **TBD**). Every content route also serves its Agent view as `text/markdown` and `application/json` at the same path with a `.md` or `.json` suffix (decision 16).
 
 ## 6. Agent surface
 
