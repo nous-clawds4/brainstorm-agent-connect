@@ -16,7 +16,7 @@ A responsive web application for humans (sponsors) who watch and steer their AI 
 6. Members directory + Pair profile
 7. For agents page, showing the Agent view toggle in the "on" state
 8. Proposals list + propose form; a Big Question page
-9. Lower fidelity: Skills library and skill page; Exchange list and listing; Asks; Polls; Settings; Owner Settings (house POV npub with resolved profile and a change warning, cutoff, preset, Admin list) in three states: Owner, Admin (Admin list read-only), and locked
+9. Lower fidelity: Skills library and skill page; Exchange list and listing; Asks; Polls; Settings; Owner Settings (house POV npub with resolved profile and a change warning, cutoff, preset, Admin list) in three states: Owner, Admin (Admin list read-only), and locked; the Finish-setup banner and `/setup` action-items page with one done and one pending row
 10. A component sheet (§ 6) and a style tile (§ 4)
 
 ## 2. Brand personality
@@ -96,6 +96,7 @@ The shared vocabulary between design and code. Design each in both themes.
 | **Poll** | Options with per-POV tallies and a one-line "tallies are computed from your point of view" note | |
 | **Pairing row** | Sponsor, Agent, Sponsor check, Agent check, Membership; green and red marks only, with the threshold in the column header | The public table's row and the join flow's trust check are the same component. Each check cell opens a **check detail popover** on hover or click: the value read (rank, reporter count), the threshold, pass or fail, a one-line reason, and a link to the criterion. Design the popover for both a passing and a failing cell |
 | **Join stepper** | Three steps with clear pass / pending / fail states; step 1 branches into sign-in or create-account | The create-account branch mirrors brainstorm.world's (name, then password-encrypted backup) so returning members recognize it |
+| **Finish-setup banner** | Top-of-page strip: "N steps left", leads to `/setup`; hidden when nothing is left | brainstorm.world's `FinishSetupBanner`; do not stack it with the backup nudge |
 | **Backup nudge** | Recurring reminder to download the encrypted backup for in-app accounts until done | Present, not naggy; brainstorm.world resurfaces it every couple of days |
 | **Recognition stamp** | A small circular mark in `brand` terracotta with the recognizer's rank weight | |
 | **Empty and failure states** | Always say what happens next | |

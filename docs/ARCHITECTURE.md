@@ -35,7 +35,46 @@ Rules that follow:
 - **Member preferences cascade over house defaults**: absent a personal setting, the house value applies.
 - **Changing the house POV pubkey changes who is admitted**, so it takes effect through the same grace-period path as a routine re-evaluation (decision 4), and the change is logged (who, when, from which npub to which).
 
-For the Cafe, **Owner Settings** (`/owner`, see SITE-SPEC) holds at least: the house POV npub; the preset; the sponsor rank cutoff (initially 10), the agent reporters cutoff (initially 2), and the re-evaluation grace period; the permissioned relay list; and, visible to all Admins but editable only by the Owner, the Admin list.
+For the Cafe, **Owner Settings** (`/owner`, see SITE-SPEC) holds at least: the house POV npub; the preset; the sponsor rank cutoff (initially 10), the agent reporters cutoff (initially 2), and the sweep interval; the permissioned relay list; and, visible to all Admins but editable only by the Owner, the Admin list.
+
+## 2b. Assistants, the kind-10040 designation, and who computes what
+
+**Server-side Assistants.** The Cafe maintains **Brainstorm Cafe Assistant** nsecs server-side, as brainstorm.world and tapestry.brainstorm.world do (tapestry: every owner, admin, and customer has an assistant in SecureKeyStorage, one per pubkey; brainstorm_server: a per-user nsec row signs "X's Brainstorm Assistant" events). An Assistant is issued to:
+
+- the Owner,
+- the House POV pubkey,
+- each Admin,
+- every pubkey that signs in and is an accepted member (MEMBERSHIP.md), whether Sponsor or Agent, at its first accepted sign-in.
+
+**One Assistant per pubkey**, whatever its roles: a pubkey that is both an Admin and a Sponsor has one Assistant. An Assistant is never deleted: if its pubkey loses membership, the Assistant lies dormant and is used again only if the pubkey regains access.
+
+**The House's nsec is not the House Assistant's nsec, and is not assumed to be ours.** The House POV pubkey is a dedicated key (decision 22); its own nsec may be held by the Owner, or by someone else entirely, since the House POV may be changed to a friend's pubkey whose nsec is obviously not under our control. That separation is the point of distinguishing House from Owner. Nothing in the Cafe may assume it can sign as the House pubkey; anything the House pubkey must sign (its 10040, its profile) is *requested* of whoever holds that key, through the prompt described below. The House **Assistant's** nsec, by contrast, is server-side and signs automatically.
+
+**What the House Assistant does today.** It publishes the House's Pairings list and Membership list (PAIRING.md § 5, MEMBERSHIP.md § 4): headers and items are authored and signed by the House Assistant on behalf of the House POV. More responsibilities will be handed to it over time.
+
+**Cadence** (decision 4, resolved: there is no grace period; membership follows reputation as fast as we can compute it):
+
+| What | Who | When |
+|---|---|---|
+| Pairing validity (PAIRING.md § 6) | House Assistant | on every Tagging published or republished to the private relays that references either Pairing Tag, plus a periodic sweep of every recorded Pairing |
+| Membership verdicts (MEMBERSHIP.md § 3) | House Assistant | after every GrapeRank run for the House Observer, and whenever a Pairing's validity changes |
+| Relay access | the relays | on each refresh of the Membership list |
+
+Nothing promises or implies a grace period for remaining a member when trust status changes; the only delay is computation.
+
+**The kind-10040 designation.** Per NIP-85 and the estate's convention, a pubkey's replaceable kind-10040 event maps each delegated assertion kind to the publisher that computes it under *that pubkey's* point of view: `["30382:rank", <assistant>, <relay>]` at brainstorm.world, the bare-kind `["30392", <publisher>, <relay>]` of the Trusted Lists draft, and the not-yet-wired `["39998:dlist-header", <TA>, <relay>]` of the assistant-designation draft. Entries are always keyed by kind, never by a free-form name, so that readers can parse them. The Cafe adds one entry in that shape:
+
+```
+["39999:brainstorm-cafe-pairing", <assistant-pubkey>, <relay>]
+```
+
+meaning "the named Assistant publishes Pairings-list items on my behalf." Further responsibilities get further kind-prefixed entries as they are handed to the Assistant.
+
+- **The House's 10040** carries the **House Assistant's** pubkey. This is the entry consumers follow to find the Cafe's Pairings list, and it is the one the Cafe needs first.
+- **A member's 10040**, if the member updates it, carries **that member's own** Assistant's pubkey, never the House Assistant's. The default assumption is that a pubkey designates its own Assistant. Alice may in principle point an entry at Bob's Assistant to adopt Bob's point of view for some score; that is the exception, not the rule, and the Cafe never fills it in for her.
+- Whether members must add this entry at all, and which members (Agents only is the likely answer), is decision 27. For now only the House is prompted.
+
+**Prompting.** Anyone whose 10040 the Cafe wants updated is prompted the way brainstorm.world does it: a persistent **"Finish setup" banner** at the top of every page with the count of steps left (`FinishSetupBanner`), which leads to the **`/setup` action-items page** (`FinishSetupPage`: done rows and pending rows, every setup surface lands there and every action returns there), from which each item opens its own action page (`/setup/activate` publishes the 10040 there). The Cafe's `/setup` has one item so far: *Publish your kind-10040 with your Cafe Assistant*. The 10040 is signed by the prompted pubkey itself, in the browser, with the Assistant pubkey supplied by the server; for the House, that means the holder of the House nsec signs in as the House and completes the item.
 
 ## 3. Objects as nostr events
 

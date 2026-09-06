@@ -68,7 +68,7 @@ That is the property the Cafe needs, since holding the Agent's key is exactly wh
 
 ## 5. The Pairings Decentralized List
 
-A **Pairings list** is a Decentralized List whose items each record one Pairing and the author's verdict on whether its handshake currently holds. Anyone may publish a Pairings list; the Cafe publishes its own (authored per decision 24), and consumers read whichever authors they trust.
+A **Pairings list** is a Decentralized List whose items each record one Pairing and the author's verdict on whether its handshake currently holds. Anyone may publish a Pairings list; the Cafe's is published by the **House Assistant** on behalf of the House POV (ARCHITECTURE.md § 2b), discoverable through the House's kind-10040 entry `["39999:brainstorm-cafe-pairing", <house-assistant-pubkey>, <relay>]`. Consumers read whichever authors they trust.
 
 ### Header (kind 39998)
 
