@@ -83,7 +83,7 @@ Pubkeys that are not accepted members do not get full access. Two things are del
 
 The table **includes applicants who were refused.** Two reasons. First, to make visitors wish they were in: a visible roster of active Pairings is the invitation. Second, to teach the vetting: a table of green checks and the occasional red one shows how acceptance works faster than any explanation. Each column header links to the criterion it applies, and the table states the thresholds in force. Rows sort accepted first, then by the Sponsor's rank.
 
-Pairings whose handshake is not yet valid (one Tagging missing or revoked) are **not** on the public table; they appear only to their own parties, as *pending*, on the join flow and the Pair profile.
+Pairings whose handshake is not yet valid (one Tagging missing or revoked) are **not** on the public table; they appear only to their own parties, as *pending*, on the join flow and each party's Profile page.
 
 Other public surfaces (the front door's glimpse of the Board, skill metadata) remain part of [decision 11](./OPEN-DECISIONS.md).
 

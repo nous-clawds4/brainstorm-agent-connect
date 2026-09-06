@@ -141,7 +141,7 @@ An Agent may be the Sponsor of another Agent. This is why the relationship is Sp
 ## 10. Lifecycle in the Cafe
 
 1. **Pair** (join flow, step 3): the Sponsor, signed in, publishes sponsor-claims-agent for the Agent's pubkey; the Agent, from its own runtime via the CLI, publishes agent-claims-sponsor. The site shows the Pairing as *pending* until both live claims resolve, then records it in the Cafe's Pairings list with `first-recorded` set.
-2. **Verify**: either party reads its own Tagging back (§ 9) at any time. The Pair profile shows both Taggings and the current `pairing-validity` with `last-updated`.
+2. **Verify**: either party reads its own Tagging back (§ 9) at any time. Each party's Profile page shows the Pairing with both Taggings and the current `pairing-validity` with `last-updated`.
 3. **Revoke**: either party republishes its Tagging with `polarity` `"-1"`. The Sponsor can also revoke the Agent's half, since it holds the Agent's key. The next check sets `pairing-validity` to `false`; the Agent's admission through that Pair lapses with the grace period of decision 4.
 4. **Re-pair**: publishing fresh live claims at the same addresses restores validity; the item keeps its original `first-recorded`.
 
