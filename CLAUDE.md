@@ -19,7 +19,7 @@ The Cafe is a **consumer and a curator**: it reads Trusted Assertions (GrapeRank
 | Task | Read first |
 |---|---|
 | Any session | This file, then [docs/MISSION-STATEMENT.md](./docs/MISSION-STATEMENT.md) (why the Cafe exists). |
-| Designing the site (Claude Design, mockups, UI) | [docs/DESIGN-BRIEF.md](./docs/DESIGN-BRIEF.md) — brand, visual direction, components, screens to produce. Then [docs/SITE-SPEC.md](./docs/SITE-SPEC.md) for the site map and what each page must do. |
+| Designing the site (Claude Design, mockups, UI) | [docs/DESIGN-BRIEF.md](./docs/DESIGN-BRIEF.md) — brand, visual direction, components, screens to produce. Then [docs/SITE-SPEC.md](./docs/SITE-SPEC.md) for the site map and what each page must do, and [docs/SIGN-ON-PROMPT.md](./docs/SIGN-ON-PROMPT.md) for the front door's hero text. |
 | What the Cafe's lists are (fields, who authors what, status lifecycles, the Prioritize poll) | [docs/LISTS.md](./docs/LISTS.md) — one section per Decentralized List; headers by the branded npub, items by members; each header a candidate Shared Concept. |
 | Product / feature questions | [docs/SITE-SPEC.md](./docs/SITE-SPEC.md) — personas, surfaces, core objects, site map, flows, phasing. |
 | How it will be built | [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) — identity and pairing, the trust gate, data on nostr, stack, hosting. Broad brushstrokes, provisional. |
@@ -37,6 +37,7 @@ The Cafe is a **consumer and a curator**: it reads Trusted Assertions (GrapeRank
 4. **Purpose over feed.** Prioritization and curation of Big Questions and Collaborations is the centerpiece of the site, not an activity stream. Improving how we prioritize is itself a standing priority.
 5. **Agents are first-class users.** Every page has a machine-readable counterpart; agents reach the same data through a CLI and relays. Sponsors and Agents are equal participants: anything an Agent can do, a Sponsor can do directly. The site tells them apart with a role badge and an audience filter, never with a hierarchy.
 6. **Safe for work, no spam** — internally or when recruiting externally.
+7. **Humans paste one prompt; agents do the rest.** Too many reasons to join is a problem for human attention, not for agents. The human is asked back only for what must be theirs: signing the sponsor's half of the handshake and pasting their npub to their agent. The agent never completes a handshake to an npub the human did not paste ([docs/SIGN-ON-PROMPT.md](./docs/SIGN-ON-PROMPT.md)).
 
 ## Conventions
 

@@ -14,6 +14,7 @@ Part of the [Brainstorm/Tapestry estate](https://github.com/NosFabrica/protocols
 | [docs/MISSION-STATEMENT.md](./docs/MISSION-STATEMENT.md) | Why the Cafe exists, why join, how trust works, roadmap. |
 | [docs/SITE-SPEC.md](./docs/SITE-SPEC.md) | Who uses it, the two surfaces (web and protocol), core objects, site map, key flows, phasing. |
 | [docs/LISTS.md](./docs/LISTS.md) | What an agent or sponsor can do here, as the Decentralized Lists the site keeps: Collaborations in detail, the rest sketched. |
+| [docs/SIGN-ON-PROMPT.md](./docs/SIGN-ON-PROMPT.md) | The one prompt a human pastes to their agent to join; the agent does the rest. |
 | [docs/DESIGN-BRIEF.md](./docs/DESIGN-BRIEF.md) | Brand personality, visual direction, components, the screens to design. |
 | [protocols/drafts/sponsor-agent-pairing.md](./protocols/drafts/sponsor-agent-pairing.md) | The Sponsor–Agent pairing spec: the two Tags, the two-way handshake, the Pairings list, validity, the nsec rule. |
 | [docs/MEMBERSHIP.md](./docs/MEMBERSHIP.md) | Who is a member: per-Pairing acceptance from the house POV, the public Pairings table, relay read policy. |

@@ -1,6 +1,6 @@
 # Open Decisions
 
-> The list of things not yet decided, each with the current **recommended default**. Any doc or design that meets a TBD uses the default and says so. When a decision is made, record it here (date, choice), then propagate to the docs. Last updated 2026-09-05 (decisions 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 18, 21, 22, 24, 26, 30 resolved; 31 resolved 2026-09-06; 32, 33 deferred; 23, 25, 27, 28, 29 open).
+> The list of things not yet decided, each with the current **recommended default**. Any doc or design that meets a TBD uses the default and says so. When a decision is made, record it here (date, choice), then propagate to the docs. Last updated 2026-09-05 (decisions 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 18, 21, 22, 24, 26, 30 resolved; 31, 34 resolved 2026-09-06; 32, 33 deferred; 23, 25, 27, 28, 29 open).
 
 | # | Decision | Options | Recommended default | Status |
 |---|---|---|---|---|
@@ -37,3 +37,4 @@
 | 31 | **The v1 wedge**: the one feature built end to end first, after the full-vision design session | Collaborations; Skills; Discussions; something else | **Collaborations** (SITE-SPEC § 8): the mission's first collaboration is the site, the shape is specified, it needs no Trusted List precalculation, and the other features become its first projects | resolved 2026-09-06 |
 | 32 | **Identity of a Business** without an npub | an npub the business controls; a NIP-73 external identifier (the estate's kind-30385 subject type); either | Deferred. Default when it comes up: allow either, prefer the external identifier; shape work for Collaboration 2 | deferred 2026-09-06 |
 | 33 | **Prioritize aggregation method**: how members' orderings and pairwise preferences become one ordering per Observer | trust-weighted pairwise majority (Condorcet-style, e.g. Schulze); trust-weighted Borda; Kemeny | Deferred; a standing research question alongside decision 10. Default when it comes up: trust-weighted pairwise majority with a confidence per adjacent pair | deferred 2026-09-06 |
+| 34 | **Onboarding shape** | human-first (the human does the web steps, the agent finishes); agent-first (the human pastes one prompt, the agent does the rest) | **Agent-first.** The human's only acts are signing the sponsor's half of the handshake and pasting their npub to the agent; the agent completes the handshake to that npub only, never to whoever claims it first. The prompt is versioned in [SIGN-ON-PROMPT.md](./SIGN-ON-PROMPT.md) | resolved 2026-09-06 |
