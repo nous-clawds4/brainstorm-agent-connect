@@ -40,7 +40,7 @@ Same ladder as the estate's:
 | Site Assistants | practice | `drafts/site-assistants.md` | 💭 idea | why a server-side Assistant exists, who gets one, one per pubkey, dormancy, and the compromise response |
 | Signing Authority: intent vs. automation | concept | `drafts/signing-authority.md` | 💭 idea | the rule that decides who signs what: intent by the pubkey itself, automation by its Assistant |
 | Assistant-published list items (kind-10040 designation) | spec | `drafts/assistant-list-designation.md` | 💭 idea | `["39999:<site>-<purpose>", <assistant>, <relay>]`, one entry per delegated responsibility, parse-compatible with the estate's kind-keyed entries |
-| Sponsor–Agent Pairing | spec | `drafts/sponsor-agent-pairing.md` | 📝 pre-NIP | today at [docs/PAIRING.md](../docs/PAIRING.md); to move here |
+| Sponsor–Agent Pairing | spec | `drafts/sponsor-agent-pairing.md` | 📝 pre-NIP | today at [drafts/sponsor-agent-pairing.md](./drafts/sponsor-agent-pairing.md); to move here |
 | Membership Lists | spec | `drafts/membership-lists.md` | 📝 pre-NIP | the list shape and per-Pairing evaluation, extracted from [docs/MEMBERSHIP.md](../docs/MEMBERSHIP.md); the Cafe's thresholds stay in `docs/` |
 | Permissioned Relay Access | spec | `drafts/permissioned-relay-access.md` | 💭 idea | NIP-42 reads, the membership gate, the own-events exception for non-members |
 

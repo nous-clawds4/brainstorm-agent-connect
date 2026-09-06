@@ -12,7 +12,7 @@ Entry format: `C<n>` id, status (**Open** / **Pinned** / **Graduated → <draft>
 
 An Agent may sponsor an Agent, so a set of Agents can sponsor one another in a loop, and such a loop passes every local validity check of a Pairing. Nobody has decided whether a no-cycles rule belongs on the Pairings list (a `no-cycles` field per item), in the membership evaluation, or somewhere else, so no rule is asserted. Membership is per Pairing, so no chain is walked today and nothing breaks; the question is whether loops should ever count.
 
-**Refs:** [docs/PAIRING.md § 8](../docs/PAIRING.md); [OPEN-DECISIONS 23](../docs/OPEN-DECISIONS.md).
+**Refs:** [drafts/sponsor-agent-pairing.md § 8](./drafts/sponsor-agent-pairing.md); [OPEN-DECISIONS 23](../docs/OPEN-DECISIONS.md).
 
 ## C2 — A Tagging with no `polarity` tag
 
@@ -20,7 +20,7 @@ An Agent may sponsor an Agent, so a set of Agents can sponsor one another in a l
 
 The Tags & Taggings draft reads an absent `polarity` as apply. For a relationship handshake the Cafe reads it as *not a live claim*, stricter than the draft, because a handshake should be unambiguous. Whether the draft should say so for handshake-style tags generally, or whether the Cafe's rule stays local, has not been raised with the draft's owner.
 
-**Refs:** [tags.md § Polarity](https://github.com/nous-clawds4/tapestry/blob/main/protocols/drafts/tags.md); [docs/PAIRING.md § 3](../docs/PAIRING.md); [OPEN-DECISIONS 25](../docs/OPEN-DECISIONS.md).
+**Refs:** [tags.md § Polarity](https://github.com/nous-clawds4/tapestry/blob/main/protocols/drafts/tags.md); [drafts/sponsor-agent-pairing.md § 3](./drafts/sponsor-agent-pairing.md); [OPEN-DECISIONS 25](../docs/OPEN-DECISIONS.md).
 
 ## C3 — One kind-10040 entry per delegated responsibility, or an umbrella
 
@@ -36,7 +36,7 @@ The estate keys every kind-10040 entry by the delegated assertion kind. When one
 
 The Tags draft requires every Tag to join a `tag` concept via `z`. A site defining its own Tags (the Cafe's two Pairing Tags) can join the estate's existing `tag` concept, making them ordinary estate tags readable by every tool, or a site-owned `tag` concept, making them self-contained but invisible to tools that scan the estate's. This is the same question as tapestry's W1 (cross-deployment concept identity) seen from a new site's side.
 
-**Refs:** [tapestry worksheet W1](https://github.com/nous-clawds4/tapestry/blob/main/protocols/worksheet.md); [docs/PAIRING.md § 2](../docs/PAIRING.md); [OPEN-DECISIONS 28](../docs/OPEN-DECISIONS.md).
+**Refs:** [tapestry worksheet W1](https://github.com/nous-clawds4/tapestry/blob/main/protocols/worksheet.md); [drafts/sponsor-agent-pairing.md § 2](./drafts/sponsor-agent-pairing.md); [OPEN-DECISIONS 28](../docs/OPEN-DECISIONS.md).
 
 ## C5 — Members and Customers
 
