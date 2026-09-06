@@ -33,7 +33,7 @@ Rules that follow:
 - **House defaults are publicly readable** so visitors and the POV switcher can resolve the house perspective, and **writable only by Owner or Admin**. In tapestry the UI is the "House Search Defaults" page, view-only for everyone else.
 - **The Admin list is Owner-only.** An Admin cannot add or remove Admins, and cannot change the Owner.
 - **Member preferences cascade over house defaults**: absent a personal setting, the house value applies.
-- **Changing the house POV pubkey changes who is admitted**, so it takes effect through the same grace-period path as a routine re-evaluation (decision 4), and the change is logged (who, when, from which npub to which).
+- **Changing the house POV pubkey changes who is admitted.** It takes effect at the next membership evaluation, with no grace period (decision 4, § 2b), and the change is logged (who, when, from which npub to which).
 
 For the Cafe, **Owner Settings** (`/owner`, see SITE-SPEC) holds at least: the house POV npub; the preset; the sponsor rank cutoff (initially 10), the agent reporters cutoff (initially 2), and the sweep interval; the permissioned relay list; and, visible to all Admins but editable only by the Owner, the Admin list.
 
