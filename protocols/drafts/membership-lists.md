@@ -59,5 +59,5 @@ Carrying the value read *and* the cutoff applied on every item is what lets a re
 
 ## Open items
 
-- Whether a Membership list should be mirrored to a public relay or only rendered by the site (the Cafe: [OPEN-DECISIONS 11](../../docs/OPEN-DECISIONS.md)).
+- Whether a Membership list should be readable by non-members. (The Cafe: yes in v1, since its relays are open to read; [OPEN-DECISIONS 11](../../docs/OPEN-DECISIONS.md).)
 - Whether the Membership items want their own kind-10040 designation entry distinct from the existence list's ([tapestry#583](https://github.com/nous-clawds4/tapestry/pull/583) proposes one entry per responsibility).

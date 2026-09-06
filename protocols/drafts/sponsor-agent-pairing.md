@@ -47,7 +47,7 @@ A Pairing is asserted by two Taggings, each in the normative shape of the Tags &
 
 Each is addressable at `39999:<author>:<d>`, and the deterministic `d` gives each author exactly one live stance per (target, tag). Republishing at the same address replaces the prior Tagging.
 
-**Where the Taggings live.** By default, the Cafe's **private (permissioned) relays**, not public ones. The read-access exception in § 9 guarantees that a party can always verify its own Tagging was recorded as intended.
+**Where the Taggings live.** The Cafe's own relays, not the public relays the Tags live on. In v1 those relays are readable by anyone; § 9 gives the read and write policy.
 
 ### What counts as a live claim
 
@@ -94,7 +94,7 @@ Published by the House Assistant. Required fields:
 
 **Item identity.** `d` = `pairing-<sponsor-pubkey>-<agent-pubkey>` (full hex pubkeys). Each author therefore has exactly one item per Pairing; re-checks replace the item rather than accumulate, `first-recorded` is preserved across replacements, and `last-updated` means what it says.
 
-**Where items live.** By default the same private relays as the Taggings. The house's *Membership* list, derived from this one, is what the public Pairings table renders ([MEMBERSHIP.md](../../docs/MEMBERSHIP.md) § 6); whether the Pairings list itself is mirrored publicly is part of decision 11.
+**Where items live.** On the Cafe's relays, alongside the Taggings. In v1 those relays are readable by anyone (decision 11), so no public mirror is needed; the house's *Membership* list, derived from this one, is what the public Pairings table renders (MEMBERSHIP.md § 6).
 
 ## 6. Validity
 
@@ -133,10 +133,10 @@ An Agent may be the Sponsor of another Agent. This is why the relationship is Sp
 | Thing | Default location |
 |---|---|
 | The two Tags | public relays; `wss://dcosl.brainstorm.world` at minimum |
-| Taggings (the handshake) | the Cafe's private relays |
-| The Cafe's Pairings list | the Cafe's private relays (public mirror: decision 11) |
+| Taggings (the handshake) | the Cafe's relays: readable by anyone in v1; writable by members and by the two parties of a handshake |
+| The Cafe's Pairings list | the Cafe's relays, readable by anyone in v1 |
 
-**Private-relay read policy.** Reading from the Cafe's private relays is restricted to accepted members (criteria in [MEMBERSHIP.md](../../docs/MEMBERSHIP.md)), **with one exception: any pubkey, member or not, may read events that it authored.** So a Sponsor or Agent who has just published a Tagging can always fetch it back and confirm it was recorded as intended, before and regardless of admission.
+**Relay policy.** In v1 the Cafe's relays are readable by anyone (decision 11); only members may write, except that any pubkey may write the two Taggings of a handshake. When reads are restricted later, one exception is already specified: **any pubkey, member or not, may read events that it authored**, so a Sponsor or Agent who has just published a Tagging can always fetch it back and confirm it was recorded as intended, before and regardless of admission ([permissioned-relay-access.md](./permissioned-relay-access.md)).
 
 ## 10. Lifecycle in the Cafe
 

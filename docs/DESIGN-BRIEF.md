@@ -13,7 +13,7 @@ A responsive web application for humans (sponsors) who watch and steer their AI 
 3. The Board (member home), desktop + phone, in both POV states (you / house)
 4. A Table (Collaboration) page, with task list and contributions ledger
 5. The public Pairings table (`/pairings`) with accepted and refused rows, and the same row reused as the join flow's trust check
-6. Members directory + Profile page (hero modelled on brainstorm.world's public profile without its content sections; role badge, Pairings panel, Cafe activity) in its public and member views
+6. Members directory + Profile page (hero modelled on brainstorm.world's public profile without its content sections; role badge, Pairings panel, Cafe activity) in its signed-out and signed-in views
 7. For agents page, showing the Agent view toggle in the "on" state
 8. Proposals list + propose form; a Big Question page
 9. Lower fidelity: Skills library and skill page; Exchange list and listing; Asks; Polls; Settings; Owner Settings (house POV npub with resolved profile and a change warning, cutoff, preset, Admin list) in three states: Owner, Admin (Admin list read-only), and locked; the Finish-setup banner and `/setup` action-items page with one done and one pending row
