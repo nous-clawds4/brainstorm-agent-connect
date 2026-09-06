@@ -68,15 +68,15 @@ That is the property the Cafe needs, since holding the Agent's key is exactly wh
 
 ## 5. The Pairings Decentralized List
 
-A **Pairings list** is a Decentralized List whose items each record one Pairing and the author's verdict on whether its handshake currently holds. Anyone may publish a Pairings list. The Cafe's has two authors by design (ARCHITECTURE.md § 2b): its **header** is signed by the House POV pubkey itself, once, because the header carries a stipulation of intent; its **items** are published by the **House Assistant** on behalf of the House POV, because recording and re-checking handshakes is automated and must run while everyone is asleep. Consumers find the item author through the House's kind-10040 entry `["39999:brainstorm-cafe-pairing", <house-assistant-pubkey>, <relay>]`, and read whichever authors they trust.
+A **Pairings list** is a Decentralized List whose items each record one Pairing and the author's verdict on whether its handshake currently holds. Anyone may publish a Pairings list. The Cafe's has two authors by design (ARCHITECTURE.md § 2b): its **header** is signed by the official Brainstorm Cafe npub, once, because the header carries a stipulation of intent and the public should read it as the site's own; its **items** are published by the **House Assistant** on behalf of the House POV, because recording and re-checking handshakes is automated and must run while everyone is asleep, and the House is the role made for computing under the site's point of view. By standard practice the branded npub *is* the House POV; if the House is ever some other key, the list stays the brand's and that House's Assistant publishes the items under it. Consumers find the item author through the House's kind-10040 entry `["39999:brainstorm-cafe-pairing", <house-assistant-pubkey>, <relay>]`, and read whichever authors they trust.
 
 ### Header (kind 39998)
 
-Signed by the House POV pubkey itself, once, as an item on the House's `/setup` page. The header MUST carry the following stipulation, verbatim or in substance:
+Signed by the official Brainstorm Cafe npub, once, as an item on its `/setup` page. The header MUST carry the following stipulation, verbatim or in substance:
 
 > **A pairing is a pairing.** An item in this list states whether a Sponsor–Agent handshake is currently valid. It is in no way a statement about the overall trustworthiness of either pubkey. Trust in a Sponsor or an Agent is a separate question, answered by Trusted Assertions from the reader's own point of view, and this list neither consults nor conveys it.
 
-The header also names the a-coordinates of the two Tags (§ 2) that items in this list check against.
+The header also names the a-coordinates of the two Tags (§ 2) that items in this list check against, and the House POV pubkey whose designated Assistant (per its kind-10040) publishes the items.
 
 ### Item (kind 39999)
 
@@ -147,7 +147,7 @@ An Agent may be the Sponsor of another Agent. This is why the relationship is Sp
 
 ## Open items
 
-- **Decision 24** (resolved) — the two Tags and the Pairings list header are signed by the official Brainstorm Cafe npub, the House POV, with intent; the Pairings list items and the whole Membership list by the House Assistant. **Decision 28** — which `tag` concept the two Tags join.
+- **Decision 24** (resolved) — the two Tags and both list headers (Pairings, Membership) are signed by the official Brainstorm Cafe npub with intent; the items of both lists by the House Assistant. **Decision 28** — which `tag` concept the two Tags join.
 - **Decision 25** — the Cafe treats a Tagging with no `polarity` tag as not a live claim, stricter than the Tags draft's default; confirm with the Tags draft's owner whether the draft should say so for pairing-style tags generally.
 - **Decision 23** — no-cycles rule: pinned (§ 8).
 - The Tags draft's own open question of `a` versus `e` references for the Tag being applied ([worksheet W4](https://github.com/nous-clawds4/tapestry/blob/main/protocols/worksheet.md)) applies here; this spec follows the a-primary normative shape.

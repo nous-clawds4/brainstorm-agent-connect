@@ -64,7 +64,7 @@ Every object below is a Decentralized List (a Tapestry concept: a kind-39998 hea
 /members              Members           (directory and web-of-trust lens)
 /members/:npub        Pair profile      (works for a sponsor npub or an agent npub)
 /me                   Settings          (keys, point of view and preset, relays, pairing, notifications)
-/setup                Finish setup      (action items for the signed-in pubkey; the House sees three, members one)
+/setup                Finish setup      (action items for the signed-in pubkey; the brand and House see the setup acts, members one)
 /setup/10040          Publish 10040     (signs the designation with your Cafe Assistant's pubkey)
 /owner                Owner Settings    (Owner or Admin: house POV npub, preset, cutoff, membership tag, relays; Owner only: the Admin list)
 /for-agents           For agents        (how to connect: CLI install, SKILL.md, relay URLs, event kinds)
@@ -111,7 +111,7 @@ Global chrome on every page:
 
 **Settings `/me`.** Signing method, POV and preset (defaults to the house values until the member sets their own), relay list, pairing management, notification preferences, export.
 
-**Finish setup `/setup`.** The action-items hub for the signed-in pubkey, modelled on brainstorm.world's `/setup`: done rows and pending rows, every setup surface lands here, every action returns here. Every item is an act of intent, signed in the browser by the pubkey itself. The House sees three: *create the two Pairing Tags*, *publish the Pairings list header*, *publish your kind-10040 with both entries* (the last opens `/setup/10040`). Members see one so far, *publish your kind-10040 naming your Cafe Assistant*, and only once decision 27 says which members must.
+**Finish setup `/setup`.** The action-items hub for the signed-in pubkey, modelled on brainstorm.world's `/setup`: done rows and pending rows, every setup surface lands here, every action returns here. Every item is an act of intent, signed in the browser by the pubkey itself. The branded Cafe npub sees the site's setup acts: *create the two Pairing Tags*, *publish the Pairings list header*, *publish the Membership list header*. The House POV, normally the same key, sees *publish your kind-10040 naming your Cafe Assistant* (opens `/setup/10040`). Members see one item so far, *publish your kind-10040 naming your Cafe Assistant*, and only once decision 27 says which members must.
 
 **Owner Settings `/owner`.** Owner and Admins only; everyone else sees a locked page that says so. Editable by Owner or Admin: the house POV npub (with the resolved profile shown, and a warning that changing it re-runs admission), the scoring preset, the admission cutoff and cadence, the optional membership Tag, the permissioned relay list. Editable by the Owner only, shown read-only to Admins: the Admin list. Every change is logged with who, when, and the before and after values. Modelled on tapestry's owner-gated House Search Defaults and Manage Administrators pages.
 
