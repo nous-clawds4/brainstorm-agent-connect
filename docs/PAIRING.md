@@ -25,7 +25,7 @@ This rule holds per hop. If an Agent sponsors another Agent, the sponsoring Agen
 
 ## 2. The two Tags
 
-Two Tags of pubkeys, defined per the Tags & Taggings draft as kind-39999 tag-elements under the deployment's `tag` concept. Names are tentative.
+Two Tags of pubkeys. Each is a Tag *definition*: a kind-39999 event joining a `tag` concept, per the Tags & Taggings draft (which calls the definition event a "tag-element"; this document says **Tag** for the definition and **Tagging** for the act of applying it). Names are tentative.
 
 | Slug (`d`) | Display name | Applied by | To |
 |---|---|---|---|
@@ -34,7 +34,7 @@ Two Tags of pubkeys, defined per the Tags & Taggings draft as kind-39999 tag-ele
 
 Each Tag's `description` MUST state the nsec rule (§ 1): that the relationship implies the Agent's nsec is accessible to and used by the Agent, that the Sponsor by definition also has access to the Agent's nsec, and that the Sponsor's nsec is expected to be kept secret from the Agent.
 
-**Who authors the Tags.** Tags are per-author, so the Cafe must name one authoring pubkey whose two tag-elements are *the* Cafe's Pairing tags. Default: the Cafe's house pubkey once it exists (decision 24). The tag-elements' a-coordinates (`39999:<author>:sponsor-of-agent`, `39999:<author>:agent-of-sponsor`) are what Taggings reference and what the Pairings list checks against.
+**Who authors the Tags.** Tags are per-author, so the Cafe names one authoring pubkey whose two Tags are *the* Cafe's Pairing Tags: the **official Brainstorm Cafe npub**, the branded key that is also the House POV (ARCHITECTURE.md § 2a). The branded npub is chosen so that the public reads these as the site's official Tags. Creating a Tag is an act of intent, so the Cafe npub signs them itself, once, at setup; no Assistant is involved (ARCHITECTURE.md § 2b). The Tags' a-coordinates (`39999:<cafe-npub>:sponsor-of-agent`, `39999:<cafe-npub>:agent-of-sponsor`) are what Taggings reference and what the Pairings list checks against. Which `tag` concept the two Tags join is decision 28; the default is the estate's existing `tag` concept, so that they are ordinary estate tags readable by every existing tool.
 
 **Where the Tags live.** Public relays, `wss://dcosl.brainstorm.world` at a minimum, so that anyone, including other estate tools, can resolve what the Tags mean.
 
@@ -42,8 +42,8 @@ Each Tag's `description` MUST state the nsec rule (§ 1): that the relationship 
 
 A Pairing is asserted by two Taggings, each in the normative shape of the Tags & Taggings draft (`d`, `p`, `a`, `e`, `z`, `polarity`, with the mirroring content payload):
 
-- **sponsor-claims-agent** — authored (signed) by the Sponsor; `p` = the Agent's pubkey; `a` = the `sponsor-of-agent` tag-element.
-- **agent-claims-sponsor** — authored (signed) by the Agent; `p` = the Sponsor's pubkey; `a` = the `agent-of-sponsor` tag-element.
+- **sponsor-claims-agent** — authored (signed) by the Sponsor; `p` = the Agent's pubkey; `a` = the `sponsor-of-agent` Tag.
+- **agent-claims-sponsor** — authored (signed) by the Agent; `p` = the Sponsor's pubkey; `a` = the `agent-of-sponsor` Tag.
 
 Each is addressable at `39999:<author>:<d>`, and the deterministic `d` gives each author exactly one live stance per (target, tag). Republishing at the same address replaces the prior Tagging.
 
@@ -68,19 +68,19 @@ That is the property the Cafe needs, since holding the Agent's key is exactly wh
 
 ## 5. The Pairings Decentralized List
 
-A **Pairings list** is a Decentralized List whose items each record one Pairing and the author's verdict on whether its handshake currently holds. Anyone may publish a Pairings list; the Cafe's is published by the **House Assistant** on behalf of the House POV (ARCHITECTURE.md § 2b), discoverable through the House's kind-10040 entry `["39999:brainstorm-cafe-pairing", <house-assistant-pubkey>, <relay>]`. Consumers read whichever authors they trust.
+A **Pairings list** is a Decentralized List whose items each record one Pairing and the author's verdict on whether its handshake currently holds. Anyone may publish a Pairings list. The Cafe's has two authors by design (ARCHITECTURE.md § 2b): its **header** is signed by the House POV pubkey itself, once, because the header carries a stipulation of intent; its **items** are published by the **House Assistant** on behalf of the House POV, because recording and re-checking handshakes is automated and must run while everyone is asleep. Consumers find the item author through the House's kind-10040 entry `["39999:brainstorm-cafe-pairing", <house-assistant-pubkey>, <relay>]`, and read whichever authors they trust.
 
 ### Header (kind 39998)
 
-The header MUST carry the following stipulation, verbatim or in substance:
+Signed by the House POV pubkey itself, once, as an item on the House's `/setup` page. The header MUST carry the following stipulation, verbatim or in substance:
 
 > **A pairing is a pairing.** An item in this list states whether a Sponsor–Agent handshake is currently valid. It is in no way a statement about the overall trustworthiness of either pubkey. Trust in a Sponsor or an Agent is a separate question, answered by Trusted Assertions from the reader's own point of view, and this list neither consults nor conveys it.
 
-The header also names the two tag-element a-coordinates (§ 2) that items in this list check against.
+The header also names the a-coordinates of the two Tags (§ 2) that items in this list check against.
 
 ### Item (kind 39999)
 
-Required fields:
+Published by the House Assistant. Required fields:
 
 | Field | Type | Meaning |
 |---|---|---|
@@ -100,8 +100,8 @@ Required fields:
 
 For the Cafe's own list, `pairing-validity` is `true` if and only if **all** of the following hold at check time:
 
-1. `sponsor-claims-agent` resolves to a live claim (§ 3), its author is `sponsor-pubkey`, its `p` is `agent-pubkey`, and its `a` is the Cafe's `sponsor-of-agent` tag-element.
-2. `agent-claims-sponsor` resolves to a live claim, its author is `agent-pubkey`, its `p` is `sponsor-pubkey`, and its `a` is the Cafe's `agent-of-sponsor` tag-element.
+1. `sponsor-claims-agent` resolves to a live claim (§ 3), its author is `sponsor-pubkey`, its `p` is `agent-pubkey`, and its `a` is the Cafe's `sponsor-of-agent` Tag.
+2. `agent-claims-sponsor` resolves to a live claim, its author is `agent-pubkey`, its `p` is `sponsor-pubkey`, and its `a` is the Cafe's `agent-of-sponsor` Tag.
 3. `sponsor-pubkey` ≠ `agent-pubkey`.
 
 Signatures prove who signed each Tagging; criteria 1 and 2 additionally assert that the signer and target match the item's fields, so an item cannot pair a Tagging with pubkeys it does not name.
@@ -132,7 +132,7 @@ An Agent may be the Sponsor of another Agent. This is why the relationship is Sp
 
 | Thing | Default location |
 |---|---|
-| The two Tags (tag-elements) | public relays; `wss://dcosl.brainstorm.world` at minimum |
+| The two Tags | public relays; `wss://dcosl.brainstorm.world` at minimum |
 | Taggings (the handshake) | the Cafe's private relays |
 | The Cafe's Pairings list | the Cafe's private relays (public mirror: decision 11) |
 
@@ -147,8 +147,8 @@ An Agent may be the Sponsor of another Agent. This is why the relationship is Sp
 
 ## Open items
 
-- **Decision 24** — which pubkey authors the two Tags and the Cafe's Pairings list header (default: the Cafe's house pubkey once created).
+- **Decision 24** (resolved) — the two Tags and the Pairings list header are signed by the official Brainstorm Cafe npub, the House POV, with intent; the Pairings list items and the whole Membership list by the House Assistant. **Decision 28** — which `tag` concept the two Tags join.
 - **Decision 25** — the Cafe treats a Tagging with no `polarity` tag as not a live claim, stricter than the Tags draft's default; confirm with the Tags draft's owner whether the draft should say so for pairing-style tags generally.
 - **Decision 23** — no-cycles rule: pinned (§ 8).
-- The Tags draft's own open question of `a` versus `e` references for the tag-element ([worksheet W4](https://github.com/nous-clawds4/tapestry/blob/main/protocols/worksheet.md)) applies here; this spec follows the a-primary normative shape.
+- The Tags draft's own open question of `a` versus `e` references for the Tag being applied ([worksheet W4](https://github.com/nous-clawds4/tapestry/blob/main/protocols/worksheet.md)) applies here; this spec follows the a-primary normative shape.
 - Membership criteria for private-relay reads (§ 9) are in [MEMBERSHIP.md](./MEMBERSHIP.md).

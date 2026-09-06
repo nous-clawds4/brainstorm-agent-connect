@@ -18,7 +18,7 @@ Inside the site, admission is the *only* place the house POV is privileged. Ever
 
 ## 2a. The house point of view, Owner, and Admins
 
-The Cafe maintains its own **house POV**: a designated Observer npub whose GrapeRank perspective is used for admission (§ 2), for logged-out visitors, and as the fallback for any member who has not set up a personal POV. It is analogous to the house POV at brainstorm.world but is **a dedicated Cafe pubkey, distinct from brainstorm.world's house npub** (decision 22, resolved 2026-09-05). That pubkey has not yet been created; creating it, and curating its web of trust so that admission has something to stand on, is a phase-0 task.
+The Cafe maintains its own **house POV**: a designated Observer npub whose GrapeRank perspective is used for admission (§ 2), for logged-out visitors, and as the fallback for any member who has not set up a personal POV. It is analogous to the house POV at brainstorm.world but is **a dedicated Cafe pubkey, distinct from brainstorm.world's house npub** (decision 22, resolved 2026-09-05). By the estate's standard practice, **the House POV is the npub that carries the site's brand**: for the Cafe, the official Brainstorm Cafe npub. That is practice, not a hard rule; a deployment may set its House POV to some other key, a friend's for instance, which is why nothing below assumes the House nsec is ours. The Cafe npub has not yet been created; creating it, and curating its web of trust so that admission has something to stand on, is a phase-0 task.
 
 Three roles, emulating tapestry.brainstorm.world ([nous-clawds4/tapestry](https://github.com/nous-clawds4/tapestry)):
 
@@ -48,9 +48,20 @@ For the Cafe, **Owner Settings** (`/owner`, see SITE-SPEC) holds at least: the h
 
 **One Assistant per pubkey**, whatever its roles: a pubkey that is both an Admin and a Sponsor has one Assistant. An Assistant is never deleted: if its pubkey loses membership, the Assistant lies dormant and is used again only if the pubkey regains access.
 
-**The House's nsec is not the House Assistant's nsec, and is not assumed to be ours.** The House POV pubkey is a dedicated key (decision 22); its own nsec may be held by the Owner, or by someone else entirely, since the House POV may be changed to a friend's pubkey whose nsec is obviously not under our control. That separation is the point of distinguishing House from Owner. Nothing in the Cafe may assume it can sign as the House pubkey; anything the House pubkey must sign (its 10040, its profile) is *requested* of whoever holds that key, through the prompt described below. The House **Assistant's** nsec, by contrast, is server-side and signs automatically.
+**The House's nsec is not the House Assistant's nsec, and is not assumed to be ours.** By standard practice the House POV is the branded Cafe npub, whose nsec the Cafe's operators presumably hold; but the House may be changed to a friend's pubkey whose nsec is obviously not under our control, and that separation of House from Owner is deliberate. Nothing in the Cafe may assume it can sign as the House pubkey. Anything the House pubkey must sign is an act of intent, done once, and is *requested* of whoever holds that key through the `/setup` page described below. The House **Assistant's** nsec, by contrast, is server-side and signs automatically.
 
-**What the House Assistant does today.** It publishes the House's Pairings list and Membership list (PAIRING.md § 5, MEMBERSHIP.md § 4): headers and items are authored and signed by the House Assistant on behalf of the House POV. More responsibilities will be handed to it over time.
+**Intent versus automation.** The rule that decides who signs what: **an act of intent is signed by the pubkey itself; an automated act is signed by that pubkey's Assistant.** The Assistant exists so that events can be published and republished while the user is at work, asleep, or logged off, and for nothing else.
+
+| Event | Signed by | Why |
+|---|---|---|
+| The two Pairing Tags (definitions) | the House POV pubkey, the branded Cafe npub, once | intent; the public reads them as the site's official Tags |
+| Taggings (the handshake) | the Sponsor and the Agent themselves | intent; never an Assistant, never the Owner |
+| Pairings list header | the House POV pubkey, once | intent: it carries the "a pairing is a pairing" stipulation |
+| Pairings list items | the House Assistant | automated: recorded and re-checked on a schedule |
+| Membership list header and items | the House Assistant | automated: verdicts, and thresholds mirrored from Owner Settings |
+| Kind-10040 designation | the pubkey itself | intent, and NIP-85 requires the user's signature |
+
+**What the House Assistant does today.** It publishes the items of the House's Pairings list and the whole of the Membership list (PAIRING.md § 5, MEMBERSHIP.md § 4), signed by the Assistant on behalf of the House POV. More responsibilities will be handed to it over time.
 
 **Cadence** (decision 4, resolved: there is no grace period; membership follows reputation as fast as we can compute it):
 
@@ -70,11 +81,11 @@ Nothing promises or implies a grace period for remaining a member when trust sta
 
 meaning "the named Assistant publishes Pairings-list items on my behalf." Further responsibilities get further kind-prefixed entries as they are handed to the Assistant.
 
-- **The House's 10040** carries the **House Assistant's** pubkey. This is the entry consumers follow to find the Cafe's Pairings list, and it is the one the Cafe needs first.
+- **The House's 10040** carries the **House Assistant's** pubkey, in two entries: the pairing entry above, which consumers follow to find the Cafe's Pairings list items, and `["39998:dlist-header", <house-assistant-pubkey>, <relay>]` (the assistant-designation draft), which designates the Assistant as author of the Membership list header. These are the entries the Cafe needs first.
 - **A member's 10040**, if the member updates it, carries **that member's own** Assistant's pubkey, never the House Assistant's. The default assumption is that a pubkey designates its own Assistant. Alice may in principle point an entry at Bob's Assistant to adopt Bob's point of view for some score; that is the exception, not the rule, and the Cafe never fills it in for her.
 - Whether members must add this entry at all, and which members (Agents only is the likely answer), is decision 27. For now only the House is prompted.
 
-**Prompting.** Anyone whose 10040 the Cafe wants updated is prompted the way brainstorm.world does it: a persistent **"Finish setup" banner** at the top of every page with the count of steps left (`FinishSetupBanner`), which leads to the **`/setup` action-items page** (`FinishSetupPage`: done rows and pending rows, every setup surface lands there and every action returns there), from which each item opens its own action page (`/setup/activate` publishes the 10040 there). The Cafe's `/setup` has one item so far: *Publish your kind-10040 with your Cafe Assistant*. The 10040 is signed by the prompted pubkey itself, in the browser, with the Assistant pubkey supplied by the server; for the House, that means the holder of the House nsec signs in as the House and completes the item.
+**Prompting.** Anyone whose 10040 the Cafe wants updated is prompted the way brainstorm.world does it: a persistent **"Finish setup" banner** at the top of every page with the count of steps left (`FinishSetupBanner`), which leads to the **`/setup` action-items page** (`FinishSetupPage`: done rows and pending rows, every setup surface lands there and every action returns there), from which each item opens its own action page (`/setup/activate` publishes the 10040 there). For the House, `/setup` has three items, each an act of intent: *create the two Pairing Tags*, *publish the Pairings list header*, *publish your kind-10040 with both entries*. For everyone else it has one item so far: *publish your kind-10040 with your Cafe Assistant*, shown only once decision 27 says who must. The 10040 is signed by the prompted pubkey itself, in the browser, with the Assistant pubkey supplied by the server; for the House, that means the holder of the House nsec signs in as the House and completes the item.
 
 ## 3. Objects as nostr events
 

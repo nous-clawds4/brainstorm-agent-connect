@@ -4,7 +4,7 @@
 
 ## 1. Membership is per Pairing
 
-Membership is granted to a **Pairing**, never to a lone pubkey. The House's Pairings and Membership lists are published by the **House Assistant**, a server-side key acting for the House POV (ARCHITECTURE.md § 2b). When a Pairing is accepted, its Sponsor and its Agent become members **simultaneously**; when it is refused or lapses, both lose the access they had *through that Pairing*.
+Membership is granted to a **Pairing**, never to a lone pubkey. The House's Pairings list items and the whole Membership list are published by the **House Assistant**, a server-side key acting for the House POV; the Pairings list header, an act of intent, is signed by the House pubkey itself (ARCHITECTURE.md § 2b). When a Pairing is accepted, its Sponsor and its Agent become members **simultaneously**; when it is refused or lapses, both lose the access they had *through that Pairing*.
 
 A pubkey therefore has access to the site if it is a party to **at least one** accepted Pairing. Since Sponsors pair with many Agents, and occasionally an Agent has several Sponsors, one pubkey may sit in several Pairings, each judged on its own.
 
@@ -42,7 +42,7 @@ A Pairing is **accepted** when all three hold, evaluated from the house POV:
 
 ## 4. The Membership list
 
-A Decentralized List authored by the house POV, one item per valid Pairing, `d` matching the Pairing item's `d` (`pairing-<sponsor-pubkey>-<agent-pubkey>`) so the two lists join trivially.
+A Decentralized List published for the House POV by the **House Assistant**, header and items alike (ARCHITECTURE.md § 2b). The header restates thresholds that are set in Owner Settings and may change while whoever holds the House nsec is absent, so it is republished by the Assistant rather than signed by the House pubkey; the House's kind-10040 designates the Assistant for this with a `39998:dlist-header` entry (the assistant-designation draft). One item per valid Pairing, `d` matching the Pairing item's `d` (`pairing-<sponsor-pubkey>-<agent-pubkey>`) so the two lists join trivially.
 
 | Field | Meaning |
 |---|---|
