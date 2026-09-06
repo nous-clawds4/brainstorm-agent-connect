@@ -50,7 +50,7 @@ For the Cafe, **Owner Settings** (`/owner`, see SITE-SPEC) holds at least: the h
 
 **The House's nsec is not the House Assistant's nsec, and is not assumed to be ours.** By standard practice the House POV is the branded Cafe npub, whose nsec the Cafe's operators presumably hold; but the House may be changed to a friend's pubkey whose nsec is obviously not under our control, and that separation of House from Owner is deliberate. Nothing in the Cafe may assume it can sign as the House pubkey. Anything the House pubkey must sign is an act of intent, done once, and is *requested* of whoever holds that key through the `/setup` page described below. The House **Assistant's** nsec, by contrast, is server-side and signs automatically.
 
-**Intent versus automation.** The rule that decides who signs what: **an act of intent is signed by the pubkey itself; an automated act is signed by that pubkey's Assistant.** The Assistant exists so that events can be published and republished while the user is at work, asleep, or logged off, and for nothing else.
+**Intent versus automation.** (Proposed as estate practice in [NosFabrica/protocols#8](https://github.com/NosFabrica/protocols/pull/8), PRACTICES.md § 5.) The rule that decides who signs what: **an act of intent is signed by the pubkey itself; an automated act is signed by that pubkey's Assistant.** The Assistant exists so that events can be published and republished while the user is at work, asleep, or logged off, and for nothing else.
 
 | Event | Signed by | Why |
 |---|---|---|

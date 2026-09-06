@@ -42,6 +42,8 @@ A Pairing is **accepted** when all three hold, evaluated from the house POV:
 
 ## 4. The Membership list
 
+The list shape and evaluation rules are specified estate-wide in [protocols/drafts/membership-lists.md](../protocols/drafts/membership-lists.md); this section gives the Cafe's instance.
+
 A Decentralized List whose **header** is signed by the official Brainstorm Cafe npub, with intent, and whose **items** are published by the House Assistant (ARCHITECTURE.md § 2b). The header states the criteria in force *by name*, the date they last changed, and the House POV pubkey whose designated Assistant publishes the items. The numeric thresholds are **not** in the header: every item carries the cutoff it was judged against (below), so a threshold change in Owner Settings takes effect through the Assistant's next items and never requires the brand to re-sign the header. The header is re-signed only when the criteria themselves change, which is rare and deliberate. One item per valid Pairing, `d` matching the Pairing item's `d` (`pairing-<sponsor-pubkey>-<agent-pubkey>`) so the two lists join trivially.
 
 | Field | Meaning |

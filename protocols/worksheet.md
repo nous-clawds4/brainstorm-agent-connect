@@ -16,7 +16,7 @@ An Agent may sponsor an Agent, so a set of Agents can sponsor one another in a l
 
 ## C2 — A Tagging with no `polarity` tag
 
-**Status:** Open · raised 2026-09-05
+**Status:** Open · raised 2026-09-05 · raised upstream as tapestry worksheet W17 in [tapestry#583](https://github.com/nous-clawds4/tapestry/pull/583)
 
 The Tags & Taggings draft reads an absent `polarity` as apply. For a relationship handshake the Cafe reads it as *not a live claim*, stricter than the draft, because a handshake should be unambiguous. Whether the draft should say so for handshake-style tags generally, or whether the Cafe's rule stays local, has not been raised with the draft's owner.
 
@@ -26,7 +26,7 @@ The Tags & Taggings draft reads an absent `polarity` as apply. For a relationshi
 
 **Status:** Open · raised 2026-09-05
 
-The estate keys every kind-10040 entry by the delegated assertion kind. When one Assistant publishes items for several lists of the same kind (39999) for the same site, the choice is between one entry per responsibility (`39999:<site>-pairing`, `39999:<site>-membership`, …) and one umbrella entry per site. Per-responsibility matches the Trusted Lists draft's named-entry direction and lets responsibilities be delegated to different keys later; an umbrella is fewer signatures for the user. The Cafe starts per-responsibility.
+The estate keys every kind-10040 entry by the delegated assertion kind. When one Assistant publishes items for several lists of the same kind (39999) for the same site, the choice is between one entry per responsibility (`39999:<site>-pairing`, `39999:<site>-membership`, …) and one umbrella entry per site. Per-responsibility matches the Trusted Lists draft's named-entry direction and lets responsibilities be delegated to different keys later; an umbrella is fewer signatures for the user. The Cafe starts per-responsibility; proposed as the convention in [tapestry#583](https://github.com/nous-clawds4/tapestry/pull/583).
 
 **Refs:** [trusted-lists.md § Treasure-Map advertisement](https://github.com/nous-clawds4/tapestry/blob/main/protocols/drafts/trusted-lists.md); [docs/ARCHITECTURE.md § 2b](../docs/ARCHITECTURE.md); [OPEN-DECISIONS 29](../docs/OPEN-DECISIONS.md).
 

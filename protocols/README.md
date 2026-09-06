@@ -29,20 +29,21 @@ Same ladder as the estate's:
 | 💭 idea | listed below; not yet a coherent document |
 | 📝 pre-NIP | local draft in `drafts/`; may stay internal by design |
 | 🧪 pre-NIP (publish-ready) | content complete; awaiting the decision/act of promotion |
+| 🧪 PR open | drafted straight into its destination repo as a pull request, because the practice already exists across the estate; nothing is held locally |
 | 🚀 published | promoted to NosFabrica/protocols or NostrHub; the file here becomes a pointer |
 
 ## Draft index
 
-| Draft | Kind | File | Status | Notes |
+| Draft | Kind | Where | Status | Notes |
 |---|---|---|---|---|
-| Site Roles | concept | `drafts/site-roles.md` | 💭 idea | Owner, Admin, House PoV, branded npub, Assistants, Members, Customers, Guests, Public; which are hard rules and which are defaults |
-| House PoV and Personal PoV | concept | `drafts/house-and-personal-pov.md` | 💭 idea | what the House is for, what is privileged to it (admission only), the defaults cascade, choosing and changing the House |
-| Site Assistants | practice | `drafts/site-assistants.md` | 💭 idea | why a server-side Assistant exists, who gets one, one per pubkey, dormancy, and the compromise response |
-| Signing Authority: intent vs. automation | concept | `drafts/signing-authority.md` | 💭 idea | the rule that decides who signs what: intent by the pubkey itself, automation by its Assistant |
-| Assistant-published list items (kind-10040 designation) | spec | `drafts/assistant-list-designation.md` | 💭 idea | `["39999:<site>-<purpose>", <assistant>, <relay>]`, one entry per delegated responsibility, parse-compatible with the estate's kind-keyed entries |
-| Sponsor–Agent Pairing | spec | `drafts/sponsor-agent-pairing.md` | 📝 pre-NIP | today at [drafts/sponsor-agent-pairing.md](./drafts/sponsor-agent-pairing.md); to move here |
-| Membership Lists | spec | `drafts/membership-lists.md` | 📝 pre-NIP | the list shape and per-Pairing evaluation, extracted from [docs/MEMBERSHIP.md](../docs/MEMBERSHIP.md); the Cafe's thresholds stay in `docs/` |
-| Permissioned Relay Access | spec | `drafts/permissioned-relay-access.md` | 💭 idea | NIP-42 reads, the membership gate, the own-events exception for non-members |
+| Site Roles | concept | → [NosFabrica/protocols#8](https://github.com/NosFabrica/protocols/pull/8) (CONCEPTS.md § Site roles) | 🧪 PR open | Owner, Admin, House PoV, branded npub, Assistants, Members, Customers, Guests, Public; which are hard rules and which are defaults |
+| House PoV and Personal PoV | concept | → [NosFabrica/protocols#8](https://github.com/NosFabrica/protocols/pull/8) (PRACTICES.md §§ 1–2) | 🧪 PR open | what the House is for, what is privileged to it (admission only), the defaults cascade, choosing and changing the House |
+| Site Assistants | practice | → [NosFabrica/protocols#8](https://github.com/NosFabrica/protocols/pull/8) (PRACTICES.md § 4) | 🧪 PR open | why a server-side Assistant exists, who gets one, one per pubkey, dormancy, and the compromise response |
+| Signing Authority: intent vs. automation | concept | → [NosFabrica/protocols#8](https://github.com/NosFabrica/protocols/pull/8) (PRACTICES.md § 5) | 🧪 PR open | the rule that decides who signs what: intent by the pubkey itself, automation by its Assistant |
+| Assistant-published list items (kind-10040 designation) | spec | → [nous-clawds4/tapestry#583](https://github.com/nous-clawds4/tapestry/pull/583) (assistant-designation.md, `39999:*`) | 🧪 PR open | `["39999:<site>-<purpose>", <assistant>, <relay>]`, one entry per delegated responsibility |
+| Sponsor–Agent Pairing | spec | [drafts/sponsor-agent-pairing.md](./drafts/sponsor-agent-pairing.md) | 📝 pre-NIP | moved from `docs/` 2026-09-05; a pointer remains |
+| Membership Lists | spec | [drafts/membership-lists.md](./drafts/membership-lists.md) | 📝 pre-NIP | the list shape and evaluation rules; the Cafe's criteria and thresholds stay in [docs/MEMBERSHIP.md](../docs/MEMBERSHIP.md) |
+| Permissioned Relay Access | spec | [drafts/permissioned-relay-access.md](./drafts/permissioned-relay-access.md) | 📝 pre-NIP | NIP-42 reads, the membership gate, the own-events exception for non-members |
 
 ## Worksheet
 
