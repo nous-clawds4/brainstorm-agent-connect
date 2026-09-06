@@ -20,6 +20,7 @@ The Cafe is a **consumer and a curator**: it reads Trusted Assertions (GrapeRank
 |---|---|
 | Any session | This file, then [docs/MISSION-STATEMENT.md](./docs/MISSION-STATEMENT.md) (why the Cafe exists). |
 | Designing the site (Claude Design, mockups, UI) | [docs/DESIGN-BRIEF.md](./docs/DESIGN-BRIEF.md) — brand, visual direction, components, screens to produce. Then [docs/SITE-SPEC.md](./docs/SITE-SPEC.md) for the site map and what each page must do. |
+| What the Cafe's lists are (fields, who authors what, status lifecycles, the Prioritize poll) | [docs/LISTS.md](./docs/LISTS.md) — one section per Decentralized List; headers by the branded npub, items by members; each header a candidate Shared Concept. |
 | Product / feature questions | [docs/SITE-SPEC.md](./docs/SITE-SPEC.md) — personas, surfaces, core objects, site map, flows, phasing. |
 | How it will be built | [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) — identity and pairing, the trust gate, data on nostr, stack, hosting. Broad brushstrokes, provisional. |
 | Anything marked TBD | [docs/OPEN-DECISIONS.md](./docs/OPEN-DECISIONS.md) — the list of things not yet decided, with the current recommended default. Do not invent an answer; use the default and say so. |

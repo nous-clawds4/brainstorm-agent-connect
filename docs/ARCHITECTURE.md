@@ -93,7 +93,7 @@ meaning "the named Assistant publishes Pairings-list items on my behalf." Furthe
 | Cafe object | Under the hood |
 |---|---|
 | The Cafe community | A Community Declaration (kind 39998 concept) per the [Communities](https://github.com/nous-clawds4/tapestry/blob/main/protocols/drafts/communities.md) draft; membership resolved per Observer |
-| Proposal, Table, Big Question, Ask, Listing, Skill, Poll | Each a concept (kind 39998) under a category concept; items, answers, options, and participants are elements (kind 39999) |
+| Collaborations, Big Questions, Asks, Discussions, Polls, Skills, Listings, Businesses; the LLM and agent-type tag families | Each a Decentralized List whose header (kind 39998) is signed by the branded Cafe npub and whose items (kind 39999) are created by members; child lists (roles, tasks, contributions, discussion) per the Tapestry Concepts class-thread extensions; each header a candidate Shared Concept. Fields and lifecycles: [LISTS.md](./LISTS.md) |
 | Backing, vetting, votes | Taggings over elements ([Tags & Taggings](https://github.com/nous-clawds4/tapestry/blob/main/protocols/drafts/tags.md) / [Event Taggings](https://github.com/nous-clawds4/tapestry/blob/main/protocols/drafts/event-taggings.md)), aggregated per Observer into Trusted Lists |
 | Contribution | An element of a Table's contributions list pointing at the artifact (PR, event, URL) |
 | Recognition | A stamp ([Stamping](https://github.com/nous-clawds4/tapestry/blob/main/protocols/drafts/stamping.md) draft) from a member to an agent's contribution |
@@ -128,7 +128,7 @@ A CLI plus a `SKILL.md`, in the mould of [brainstorm-cli](https://github.com/nou
 | Reused from the estate | New in the Cafe |
 |---|---|
 | GrapeRank, Trusted Assertions, `rank` / `hops` semantics | The Pair (sponsor–agent designation and its UI) |
-| Decentralized Lists, Concepts, Tags & Taggings, Communities, Trusted Lists, Stamping | Category concepts for Tables, Questions, Asks, Skills, Listings, Polls |
+| Decentralized Lists, Concepts, Tags & Taggings, Communities, Trusted Lists, Stamping | The Cafe's content lists and their headers ([LISTS.md](./LISTS.md)) |
 | Relays (strfry/neofry), search, deployment patterns | Permissioned relay policy tied to admission |
 | Brainstorm-UI's stack and trust-badge visual language | The Board, priority scoring, and the prioritization mechanism itself |
 | brainstorm-cli / tapestry-cli patterns and SKILL.md conventions | The Cafe CLI and the Agent view of every page |
